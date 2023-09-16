@@ -7,7 +7,7 @@ const SideBarLogo = () => {
 
   return (
     <div className="rounded-full h-14 w-14 p-4 flex items-center justify-center hover:bg-red-400 hover:bg-opacity-10 cursor-pointer transition">
-      <GrMultimedia />
+      <GrMultimedia size={28} color="blue" />
     </div>
   );
 };
