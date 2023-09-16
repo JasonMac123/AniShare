@@ -1,5 +1,6 @@
 import UserMenuLogo from "./UserMenuLogo";
 import UserMenuItem from "./UserMenuItem";
+import UserMenuCreate from "./UserMenuCreate";
 
 import { BsHouseFill, BsBellFill } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
@@ -37,6 +38,7 @@ const UserMenu = () => {
               icon={item.icon}
             />
           ))}
+          <UserMenuCreate />
           <UserMenuItem onClick={() => {}} icon={BiLogOut} label="LogOut" />
         </div>
       </div>
