@@ -12,7 +12,7 @@ const SideBarLogo = () => {
         router.push("/");
       }}
     >
-      <GrMultimedia size={28} color="blue" />
+      <GrMultimedia size={28} color="white" />
     </div>
   );
 };
