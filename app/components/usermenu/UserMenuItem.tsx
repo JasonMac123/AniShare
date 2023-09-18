@@ -20,7 +20,7 @@ const UserMenuItem: React.FC<UserMenuItemProps> = ({
       </div>
       <div className="relative hidden lg:flex items-center gap-4 p-4 rounded-full hover:bg-slate-300 hover:bg-opacity-10 cursor-pointer">
         <Icon size={24} color="red" />
-        <p className="hidden lg:block text-blue-300 text-xl">{label}</p>
+        <p className="hidden lg:block text-red-300 text-xl">{label}</p>
       </div>
     </div>
   );
