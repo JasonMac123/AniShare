@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import UserMenu from "./components/usermenu/UserMenu";
+import FollowBar from "./components/FollowBar";
 
 export const metadata = {
   title: "AniShare",
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body>
         <UserMenu />
         {children}
+        <FollowBar />
       </body>
     </html>
   );
