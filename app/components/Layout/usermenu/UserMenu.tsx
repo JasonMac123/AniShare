@@ -3,7 +3,7 @@ import UserMenuItem from "./UserMenuItem";
 import UserMenuCreate from "./UserMenuCreate";
 
 import { BsHouseFill, BsBellFill } from "react-icons/bs";
-import { BiLogOut } from "react-icons/bi";
+import { BiLogOut, BiSolidMessage } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 
 const UserMenu = () => {
@@ -17,6 +17,11 @@ const UserMenu = () => {
       label: "Notifications",
       href: "/notifications",
       icon: BsBellFill,
+    },
+    {
+      label: "Messages",
+      href: "/user/messages/123",
+      icon: BiSolidMessage,
     },
     {
       label: "Profile",
