@@ -31,9 +31,9 @@ const UserMenu = () => {
   ];
 
   return (
-    <div className="w-1/4 h-full pr-4 md:pr-6">
+    <div className="w-1/4 h-full pr-4 md:pr-6 bg-lightGray">
       <div className="flex flex-col items-end">
-        <div className="space-y-2 lg:w-[230px]">
+        <div className="space-y-2 lg:w-[230px] mt-4">
           <UserMenuLogo />
           {userMenuItems.map((item) => (
             <UserMenuItem
