@@ -18,14 +18,12 @@ export default function RootLayout({
       <body>
         <div className="h-screen bg-deepViolet">
           {/*Add light mode version */}
-          <div className="w-full h-full mx-auto xl:px-30 max-w-6xl">
-            <div className="grid grid-cols-4 h-full">
-              <UserMenu />
-              <div className="col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
-                {children}
-              </div>
-              <FollowBar />
+          <div className="grid grid-cols-4 h-full">
+            <UserMenu />
+            <div className="w-full col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
+              {children}
             </div>
+            <FollowBar />
           </div>
         </div>
       </body>
