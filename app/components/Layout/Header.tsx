@@ -1,12 +1,13 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 
 interface HeaderProps {
   label: string;
-  showBackArrow?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ label, showBackArrow }) => {
+const Header: React.FC<HeaderProps> = ({ label }) => {
   const router = useRouter();
 
   const handleBack = useCallback(() => {

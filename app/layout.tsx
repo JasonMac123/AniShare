@@ -1,7 +1,7 @@
 import "./globals.css";
 
-import UserMenu from "./components/usermenu/UserMenu";
-import FollowBar from "./components/FollowBar";
+import UserMenu from "./components/Layout/usermenu/UserMenu";
+import FollowBar from "./components/Layout/FollowBar";
 
 export const metadata = {
   title: "AniShare",
