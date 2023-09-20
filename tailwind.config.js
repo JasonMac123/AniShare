@@ -8,11 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkBlue: "#1D3557",
-        lightGray: "#F1FAEE",
-        lightBlue: "#A8DADC",
-        brightRed: "#E63946",
-        darkAqua: "#457B9D",
+        taupe: "#463F3A",
+        darkGray: "#8A817C",
+        silver: "#BCB8B1",
+        isabelline: "#F4F3EE",
+        melon: "#E0AFA0",
       },
     },
   },
