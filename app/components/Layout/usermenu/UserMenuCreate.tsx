@@ -13,8 +13,8 @@ const UserMenuCreate = () => {
         <BiCommentAdd size={28} color="red" />
       </div>
       <div className="hidden lg:flex px-4 py-2 gap-4 rounded-full items-center hover:bg-darkWhite cursor-pointer transition">
-        <BiCommentAdd size={28} color="red" />
-        <p className="hidden lg:block text-center font-semibold text-brightRed text-[26px]">
+        <BiCommentAdd size={24} color="red" />
+        <p className="hidden lg:block text-center font-semibold text-brightRed text-xl">
           Create
         </p>
       </div>
