@@ -13,6 +13,7 @@ module.exports = {
         silver: "#BCB8B1",
         isabelline: "#F4F3EE",
         melon: "#E0AFA0",
+        davyGray: "#4D4D4D",
       },
     },
   },
