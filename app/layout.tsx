@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Modal />
+        <Modal isOpen title="Test" onClose={() => {}} />
         <div className="h-screen bg-davyGray">
           {/*Add light mode version */}
           <div className="grid grid-cols-4 h-full">
