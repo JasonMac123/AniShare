@@ -5,8 +5,6 @@ import { AiOutlineClose } from "react-icons/ai";
 
 interface ModalProps {
   isOpen?: boolean;
-  onClose: () => void;
-  onSubmit: () => void;
   title?: string;
   body?: React.ReactElement;
   footer?: React.ReactElement;
@@ -16,8 +14,6 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({
   isOpen,
-  onClose,
-  onSubmit,
   title,
   body,
   footer,
