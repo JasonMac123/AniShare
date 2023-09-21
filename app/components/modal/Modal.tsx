@@ -7,6 +7,8 @@ import Button from "../Button";
 interface ModalProps {
   isOpen?: boolean;
   title?: string;
+  onClose: () => void;
+  onSubmit: () => void;
   body?: React.ReactElement;
   footer?: React.ReactElement;
   actionLabel: string;
@@ -18,6 +20,8 @@ const Modal: React.FC<ModalProps> = ({
   title,
   body,
   footer,
+  onClose,
+  onSubmit,
   actionLabel,
   disabled,
 }) => {
