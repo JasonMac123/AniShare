@@ -1,7 +1,7 @@
 import "./globals.css";
 
-import UserMenu from "./components/Layout/usermenu/UserMenu";
-import FollowBar from "./components/Layout/FollowBar";
+import UserMenu from "./components/layout/usermenu/UserMenu";
+import FollowBar from "./components/layout/FollowBar";
 import Modal from "./components/Modal";
 
 export const metadata = {
@@ -17,8 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Modal isOpen title="Test" onClose={() => {}} />
         <div className="h-screen bg-davyGray">
+          <Modal isOpen title="Test" />
           {/*Add light mode version */}
           <div className="grid grid-cols-4 h-full">
             <UserMenu />
