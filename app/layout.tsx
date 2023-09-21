@@ -18,7 +18,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="h-screen bg-davyGray">
-          <Modal isOpen title="Test" />
           {/*Add light mode version */}
           <div className="grid grid-cols-4 h-full">
             <UserMenu />
