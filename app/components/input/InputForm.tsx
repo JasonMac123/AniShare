@@ -10,6 +10,7 @@ interface InputProps {
   value?: string;
   type?: string;
   disabled?: boolean;
+  required?: boolean;
 }
 
 const InputForm: React.FC<InputProps> = ({
@@ -20,6 +21,7 @@ const InputForm: React.FC<InputProps> = ({
   value,
   type,
   disabled,
+  required,
 }) => {
   return (
     <div className="w-full relative">
@@ -27,7 +29,7 @@ const InputForm: React.FC<InputProps> = ({
         id={id}
         disabled={disabled}
         value={value}
-        {...register(id)}
+        {...register(id, { required })}
         placeholder=" "
         type={type}
         className={`w-full peer p-4 pt-6 text-lg bg-silver border-2 rounded-md outline-none text-isabelline focus:border-2 disabled:bg-red-300 disabled:opacity-70 disabled:cursor-not-allowed
