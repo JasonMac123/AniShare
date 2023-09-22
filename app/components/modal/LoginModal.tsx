@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
@@ -9,9 +9,11 @@ import InputForm from "../input/InputForm";
 import Button from "../input/Button";
 
 import useLogin from "../hooks/useLoginModal";
+import useRegister from "../hooks/useRegisterModal";
 
 const LoginModal = () => {
   const loginModal = useLogin();
+  const registerModal = useRegister();
   const [loading, setLoading] = useState(false);
 
   const {
@@ -24,6 +26,11 @@ const LoginModal = () => {
       password: "",
     },
   });
+
+  const redirectRegister = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setLoading(true);
@@ -63,7 +70,10 @@ const LoginModal = () => {
       />
       <div className="text-neutral-600 flex-row flex gap-3">
         <div>Don't have an account yet?</div>
-        <div className="cursor-pointer hover:underline hover:text-neutral-400">
+        <div
+          onClick={redirectRegister}
+          className="cursor-pointer hover:underline hover:text-neutral-400"
+        >
           Register!
         </div>
       </div>
