@@ -7,11 +7,9 @@ interface InputProps {
   label: string;
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors;
-  placeholder?: string;
   value?: string;
   type?: string;
   disabled?: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputForm: React.FC<InputProps> = ({
@@ -19,20 +17,18 @@ const InputForm: React.FC<InputProps> = ({
   label,
   errors,
   register,
-  placeholder,
   value,
   type,
   disabled,
-  onChange,
 }) => {
   return (
     <div className="w-full relative">
       <input
         id={id}
         disabled={disabled}
-        onChange={onChange}
         value={value}
-        placeholder={placeholder}
+        {...register(id)}
+        placeholder=" "
         type={type}
         className={`w-full peer p-4 pt-6 text-lg bg-silver border-2 rounded-md outline-none text-isabelline focus:border-2 disabled:bg-red-300 disabled:opacity-70 disabled:cursor-not-allowed
 
