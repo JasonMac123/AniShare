@@ -2,9 +2,11 @@
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
 
 import Modal from "./Modal";
 import InputForm from "../input/InputForm";
+import Button from "../input/Button";
 
 import useLogin from "../hooks/useLoginModal";
 
@@ -47,6 +49,24 @@ const LoginModal = () => {
         errors={errors}
         required
       />
+    </div>
+  );
+
+  const footerContent = (
+    <div className="flex flex-col gap-4 mt-3">
+      <hr />
+      <Button
+        outline
+        label="Continue with Google"
+        icon={FcGoogle}
+        onClick={() => {}}
+      />
+      <div className="text-neutral-600 flex-row flex gap-3">
+        <div>Don't have an account yet?</div>
+        <div className="cursor-pointer hover:underline hover:text-neutral-400">
+          Register!
+        </div>
+      </div>
     </div>
   );
 
