@@ -8,7 +8,6 @@ interface ButtonProps {
   fullWidth?: boolean;
   large?: boolean;
   onClick: () => void;
-  outline?: boolean;
   disabled?: boolean;
   icon?: IconType;
 }
@@ -19,7 +18,6 @@ const Button: React.FC<ButtonProps> = ({
   fullWidth,
   large,
   onClick,
-  outline,
   disabled,
   icon: Icon,
 }) => {
@@ -27,17 +25,16 @@ const Button: React.FC<ButtonProps> = ({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`relative disabled: opacity-70 disabled:cursor-not-allowed rounded-full font-semibold hover:opacity-80 transition border-2 
+      className={`relative disabled: opacity-70 flex gap-4 justify-center disabled:cursor-not-allowed rounded-full font-semibold hover:opacity-80 transition border-2 
       ${fullWidth ? "w-full" : "w-fit"}
       ${large ? "text-xl px-5 py-3" : "text-md py-2 px-4"}
-      ${outline ? "bg-transparent border-isabelline text-isabelline" : ""}
       ${
         secondary
           ? "bg-isabelline text-black border-black"
           : "bg-melon text-isabelline border-melon"
       }`}
     >
-      {Icon && <Icon size={24} className="absolute left-3 top-3" />}
+      {Icon && <Icon size={24} />}
       {label}
     </button>
   );
