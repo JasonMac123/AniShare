@@ -80,7 +80,7 @@ const RegisterModal = () => {
         icon={FcGoogle}
         onClick={() => {}}
       />
-      <div className="text-white flex-row flex gap-3">
+      <div className="text-white flex-row flex justify-center gap-3">
         <div>Already have an account?</div>
         <div
           onClick={redirectRegister}

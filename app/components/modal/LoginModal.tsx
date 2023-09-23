@@ -70,7 +70,7 @@ const LoginModal = () => {
         icon={FcGoogle}
         onClick={() => {}}
       />
-      <div className="text-white flex-row flex gap-3">
+      <div className="text-white flex-row flex justify-center gap-3">
         <div>Don't have an account yet?</div>
         <div
           onClick={redirectRegister}
