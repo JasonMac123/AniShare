@@ -63,12 +63,14 @@ const LoginModal = () => {
     <div className="flex flex-col gap-4 mt-3">
       <hr />
       <Button
-        outline
+        secondary
+        fullWidth
+        large
         label="Continue with Google"
         icon={FcGoogle}
         onClick={() => {}}
       />
-      <div className="text-neutral-600 flex-row flex gap-3">
+      <div className="text-white flex-row flex gap-3">
         <div>Don't have an account yet?</div>
         <div
           onClick={redirectRegister}
@@ -89,6 +91,7 @@ const LoginModal = () => {
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
+      footer={footerContent}
     />
   );
 };
