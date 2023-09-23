@@ -24,6 +24,7 @@ const RegisterModal = () => {
     defaultValues: {
       email: "",
       password: "",
+      username: "",
     },
   });
 
@@ -41,6 +42,15 @@ const RegisterModal = () => {
       <InputForm
         id="email"
         label="Email"
+        type="text"
+        disabled={loading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <InputForm
+        id="username"
+        label="Username"
         type="text"
         disabled={loading}
         register={register}
@@ -86,8 +96,8 @@ const RegisterModal = () => {
     <Modal
       disabled={loading}
       isOpen={registerModal.isOpen}
-      title="Register"
-      actionLabel="Sign up"
+      title="Create an account"
+      actionLabel="Register"
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
