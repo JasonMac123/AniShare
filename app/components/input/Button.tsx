@@ -30,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
       ${large ? "text-xl px-5 py-3" : "text-md py-2 px-4"}
       ${
         secondary
-          ? "bg-isabelline text-black border-black"
+          ? "bg-white text-black border-white"
           : "bg-melon text-isabelline border-melon"
       }`}
     >
