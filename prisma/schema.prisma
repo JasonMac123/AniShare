@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -27,39 +27,40 @@ model User {
   followedBy      User[]    @relation("UserFollows")
   following       User[]    @relation("UserFollows")
 
-  posts Post[]
-  comments Comment[]
+  posts         Post[]
+  comments      Comment[]
   notifications Notification[]
 }
 
 model Post {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   body      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  author    User      @relation(fields: [authorId], references: [id])
   authorId  String
+  comment   Comment[]
 
   @@index([authorId])
 }
 
 model Comment {
-  id String @id @default(uuid())
-  body String
+  id        String   @id @default(uuid())
+  body      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  userId String
-  user User @relation(fields: [userId], references: [id])
-  postId String
-  post User @relation(fields: [postId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id])
 
   @@index([userId])
 }
 
 model Notification {
-  id String @id @unique @default(uuid())
-  body String
+  id        String   @id @unique @default(uuid())
+  body      String
   createdAt DateTime @default(now())
-  user User @relation(fields: [userId] ,references: [id])
-  userId String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
 }
