@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
+import { signIn } from "next-auth/react";
 
 import Modal from "./Modal";
 import InputForm from "../input/InputForm";
@@ -10,10 +11,12 @@ import Button from "../input/Button";
 
 import useLogin from "../hooks/useLoginModal";
 import useRegister from "../hooks/useRegisterModal";
+import { useRouter } from "next/navigation";
 
 const LoginModal = () => {
   const loginModal = useLogin();
   const registerModal = useRegister();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const {
@@ -34,8 +37,24 @@ const LoginModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setLoading(true);
-  };
 
+    signIn("credentials", {
+      ...data,
+      redirect: false,
+    }).then((callback) => {
+      setLoading(false);
+
+      if (callback?.ok) {
+        toast.success("Logged In");
+        router.refresh();
+        loginModal.onClose();
+      }
+
+      if (callback?.error) {
+        toast(`${callback.error}`);
+      }
+    });
+  };
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <InputForm
