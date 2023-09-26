@@ -2,6 +2,7 @@
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
 
 import Modal from "./Modal";
@@ -10,6 +11,7 @@ import Button from "../input/Button";
 
 import useLogin from "../hooks/useLoginModal";
 import useRegister from "../hooks/useRegisterModal";
+import { error } from "console";
 
 const RegisterModal = () => {
   const loginModal = useLogin();
@@ -35,6 +37,18 @@ const RegisterModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setLoading(true);
+
+    axios
+      .post("/api/register", data)
+      .then(() => {
+        registerModal.onClose();
+      })
+      .catch((error) => {
+        toast("Something went wrong");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const bodyContent = (
