@@ -1,3 +1,5 @@
+"use client";
+
 import UserMenuLogo from "./UserMenuLogo";
 import UserMenuItem from "./UserMenuItem";
 import UserMenuCreate from "./UserMenuCreate";
@@ -6,6 +8,7 @@ import { BsHouseFill, BsBellFill } from "react-icons/bs";
 import { BiLogOut, BiSolidMessage } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 
+import { signOut } from "next-auth/react";
 import { safeUser } from "@/app/types";
 
 interface UserMenuProps {
@@ -51,7 +54,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           ))}
           <UserMenuCreate />
           {currentUser && (
-            <UserMenuItem onClick={() => {}} icon={BiLogOut} label="LogOut" />
+            <UserMenuItem
+              onClick={() => signOut}
+              icon={BiLogOut}
+              label="LogOut"
+            />
           )}
         </div>
       </div>
