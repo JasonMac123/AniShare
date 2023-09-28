@@ -5,16 +5,19 @@ import FollowBar from "./components/layout/FollowBar";
 import LoginModal from "./components/modal/LoginModal";
 import RegisterModal from "./components/modal/RegisterModal";
 
+import getCurrentUser from "./functions/getCurrentUser";
+
 export const metadata = {
   title: "AniShare",
   description: "A place to meet other anime fans!",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body>
