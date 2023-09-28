@@ -30,7 +30,7 @@ const UserMenuItem: React.FC<UserMenuItemProps> = ({
     if (onClick) {
       return onClick();
     }
-    if (!currentUser) {
+    if (href !== "/" && !currentUser) {
       LoginModal.onOpen();
     } else if (href) {
       router.push(href);
