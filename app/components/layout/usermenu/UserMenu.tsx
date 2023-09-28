@@ -5,11 +5,12 @@ import UserMenuItem from "./UserMenuItem";
 import UserMenuCreate from "./UserMenuCreate";
 
 import { BsHouseFill, BsBellFill } from "react-icons/bs";
-import { BiLogOut, BiSolidMessage } from "react-icons/bi";
+import { BiLogIn, BiLogOut, BiSolidMessage } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 
 import { signOut } from "next-auth/react";
 import { safeUser } from "@/app/types";
+import useLogin from "../../hooks/useLoginModal";
 
 interface UserMenuProps {
   currentUser?: safeUser | null;
@@ -39,6 +40,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     },
   ];
 
+  const loginModal = useLogin();
+
   return (
     <div className="w-full h-full md:pr-6 bg-lightGray">
       <div className="flex flex-col items-center">
@@ -53,12 +56,18 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             />
           ))}
           <UserMenuCreate />
-          {currentUser && (
+          {currentUser ? (
             <UserMenuItem
-              onClick={() => signOut}
+              onClick={() => signOut()}
               icon={BiLogOut}
               label="LogOut"
               currentUser={currentUser}
+            />
+          ) : (
+            <UserMenuItem
+              onClick={loginModal.onOpen}
+              label="Sign-in"
+              icon={BiLogIn}
             />
           )}
         </div>
