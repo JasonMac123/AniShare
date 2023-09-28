@@ -12,12 +12,12 @@ export const metadata = {
   description: "A place to meet other anime fans!",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const currentUser = getCurrentUser();
+  const currentUser = await getCurrentUser();
 
   return (
     <html lang="en">
