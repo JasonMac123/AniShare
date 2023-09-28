@@ -58,6 +58,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
               onClick={() => signOut}
               icon={BiLogOut}
               label="LogOut"
+              currentUser={currentUser}
             />
           )}
         </div>
