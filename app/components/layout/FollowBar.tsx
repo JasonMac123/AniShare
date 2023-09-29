@@ -3,12 +3,10 @@
 import { safeUser } from "@/app/types";
 
 interface FollowBarProps {
-  currentUser?: safeUser | null;
+  users: safeUser[];
 }
 
-const FollowBar: React.FC<FollowBarProps> = ({ currentUser }) => {
-  console.log(currentUser);
-
+const FollowBar: React.FC<FollowBarProps> = ({ users }) => {
   return (
     <div className="px-6 py-4 hidden lg:block">
       <div className="bg-melon rounded-xl p-4">
