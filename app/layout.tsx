@@ -1,5 +1,7 @@
 import "./globals.css";
 
+import axios from "axios";
+
 import UserMenu from "./components/layout/usermenu/UserMenu";
 import FollowBar from "./components/layout/FollowBar";
 import LoginModal from "./components/modal/LoginModal";
@@ -19,6 +21,8 @@ export default async function RootLayout({
 }) {
   const currentUser = await getCurrentUser();
 
+  const users = await axios.get("http://localhost:3000/api/users");
+
   return (
     <html lang="en">
       <body>
@@ -31,7 +35,7 @@ export default async function RootLayout({
             <div className="w-full col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
               {children}
             </div>
-            <FollowBar currentUser={currentUser} />
+            <FollowBar />
           </div>
         </div>
       </body>
