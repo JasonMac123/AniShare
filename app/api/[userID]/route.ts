@@ -10,13 +10,17 @@ export async function GET(
   request: Request,
   { params }: { params: getUserDetailsParams }
 ) {
-  const { userID } = params;
+  try {
+    const { userID } = params;
 
-  const user = await prisma.user.findUnique({
-    where: {
-      id: userID,
-    },
-  });
+    const user = await prisma.user.findUnique({
+      where: {
+        id: userID,
+      },
+    });
 
-  return NextResponse.json(user);
+    return NextResponse.json(user);
+  } catch (e: any) {
+    throw new Error(e);
+  }
 }
