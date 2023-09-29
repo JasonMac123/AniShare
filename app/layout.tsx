@@ -31,7 +31,7 @@ export default async function RootLayout({
             <div className="w-full col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
               {children}
             </div>
-            <FollowBar />
+            <FollowBar currentUser={currentUser} />
           </div>
         </div>
       </body>
