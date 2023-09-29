@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import prisma from "@/app/prisma/prismadb";
+import { NextResponse } from "next/server";
 
 export async function GET(req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -9,6 +10,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
         createdAt: "desc",
       },
     });
+    return NextResponse.json(users);
   } catch (e: any) {
     throw new Error(e);
   }
