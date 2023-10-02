@@ -4,6 +4,7 @@ import { useCallback } from "react";
 
 import { safeUser } from "../types";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface AvatarProps {
   userId: string;
@@ -31,7 +32,15 @@ const Avatar: React.FC<AvatarProps> = ({
     [router, userId]
   );
 
-  return <div></div>;
+  return (
+    <div
+      className={` rounded-full hover:opacity-90 transition cursor-pointer relative
+      ${hasBorder ? "border-4 border-black" : ""} 
+      ${isLarge ? "h-32 w-32" : "h-12 w-12"} `}
+    >
+      <Image />
+    </div>
+  );
 };
 
 export default Avatar;
