@@ -46,7 +46,7 @@ const Avatar: React.FC<AvatarProps> = ({
         }}
         alt="Avatar"
         onClick={handleClick}
-        src={user.image}
+        src={user.image || "/images/placeholder.png"}
       />
     </div>
   );
