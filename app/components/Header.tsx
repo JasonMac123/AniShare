@@ -6,7 +6,7 @@ import { useCallback } from "react";
 import { BiArrowBack } from "react-icons/bi";
 
 interface HeaderProps {
-  disableBack: Boolean;
+  disableBack?: Boolean;
   label: string;
 }
 
