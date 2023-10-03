@@ -19,7 +19,7 @@ const FollowBar: React.FC<FollowBarProps> = ({ users }) => {
                 <Avatar userId={user.id} user={user} />
                 <div className="flex flex-col">
                   <p className="text-white font-semibold text-sm">
-                    {user.name}
+                    @{user.username}
                   </p>
                 </div>
               </div>
