@@ -22,6 +22,8 @@ const UserView = async ({ params }: { params: UserViewPageProps }) => {
       <UserBio
         currentUser={currrentUser?.id}
         createdAt={userData.data.createdAt}
+        username={userData.data.username}
+        bio={userData.data.bio}
       />
     </>
   );

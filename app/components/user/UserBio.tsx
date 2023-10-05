@@ -7,9 +7,16 @@ import Button from "../input/Button";
 interface UserBioProps {
   currentUser?: string;
   createdAt: string;
+  username: string;
+  bio: string;
 }
 
-const UserBio: React.FC<UserBioProps> = ({ currentUser, createdAt }) => {
+const UserBio: React.FC<UserBioProps> = ({
+  currentUser,
+  createdAt,
+  username,
+  bio,
+}) => {
   const newDate = useMemo(() => {
     return format(new Date(createdAt), "MMMM yyyy");
   }, [createdAt]);
@@ -22,6 +29,14 @@ const UserBio: React.FC<UserBioProps> = ({ currentUser, createdAt }) => {
         ) : (
           <Button onClick={() => {}} label="Follow" secondary />
         )}
+      </div>
+      <div className="mt-8 px-4">
+        <div className="flex flex-col">
+          <p className="text-white text-2xl font-semibold">@{username}</p>
+        </div>
+        <div className="flex flex-col mt-4">
+          <p className="text-white">{bio}</p>
+        </div>
       </div>
     </div>
   );
