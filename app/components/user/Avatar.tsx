@@ -2,7 +2,6 @@
 
 import { useCallback } from "react";
 
-import { safeUser } from "../types";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import Header from "@/app/components/Header";
-import UserCover from "@/app/components/UserCover";
+import UserCover from "@/app/components/user/UserCover";
 
 interface UserViewPageProps {
   userId?: string;

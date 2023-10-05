@@ -1,7 +1,7 @@
 "use client";
 
 import { safeUser } from "@/app/types";
-import Avatar from "../Avatar";
+import Avatar from "../user/Avatar";
 
 interface FollowBarProps {
   users: safeUser[];

@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Avatar from "./Avatar";
+import Avatar from "../Avatar";
 
-import { safeUser } from "../types";
+import { safeUser } from "../../types";
 
 interface UserCoverProps {
   userId: string;
