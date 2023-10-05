@@ -8,7 +8,7 @@ import Image from "next/image";
 
 interface AvatarProps {
   userId: string;
-  userImage?: string;
+  userImage: string | null;
   isLarge?: boolean;
   hasBorder?: boolean;
 }
