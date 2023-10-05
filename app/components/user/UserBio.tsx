@@ -48,9 +48,9 @@ const UserBio: React.FC<UserBioProps> = ({
         <div className="flex flex-row items-center mt-4 gap-6">
           <div className="flex flex-row items-center gap-1">
             <p className="text-white">Following</p>
-            <p>{following}</p>
+            <p className="text-white">{following}</p>
             <p className="text-white">Followers</p>
-            <p>{followers}</p>
+            <p className="text-white">{followers}</p>
           </div>
         </div>
       </div>
