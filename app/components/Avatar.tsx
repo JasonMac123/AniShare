@@ -8,7 +8,7 @@ import Image from "next/image";
 
 interface AvatarProps {
   userId: string;
-  user: safeUser;
+  userImage?: string;
   isLarge?: boolean;
   hasBorder?: boolean;
 }
@@ -17,7 +17,7 @@ const Avatar: React.FC<AvatarProps> = ({
   userId,
   isLarge,
   hasBorder,
-  user,
+  userImage,
 }) => {
   const router = useRouter();
 
@@ -46,7 +46,7 @@ const Avatar: React.FC<AvatarProps> = ({
         }}
         alt="Avatar"
         onClick={handleClick}
-        src={user.image || "/images/placeholder.png"}
+        src={userImage || "/images/placeholder.png"}
       />
     </div>
   );
