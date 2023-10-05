@@ -10,6 +10,8 @@ interface UserBioProps {
   createdAt: string;
   username: string;
   bio: string;
+  following: number;
+  followers: number;
 }
 
 const UserBio: React.FC<UserBioProps> = ({
@@ -17,6 +19,8 @@ const UserBio: React.FC<UserBioProps> = ({
   createdAt,
   username,
   bio,
+  following,
+  followers,
 }) => {
   const newDate = useMemo(() => {
     return format(new Date(createdAt), "MMMM yyyy");
@@ -44,7 +48,9 @@ const UserBio: React.FC<UserBioProps> = ({
         <div className="flex flex-row items-center mt-4 gap-6">
           <div className="flex flex-row items-center gap-1">
             <p className="text-white">Following</p>
+            <p>{following}</p>
             <p className="text-white">Followers</p>
+            <p>{followers}</p>
           </div>
         </div>
       </div>
