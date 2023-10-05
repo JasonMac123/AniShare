@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { format } from "date-fns";
 import Button from "../input/Button";
+import { BiCalendar } from "react-icons/bi";
 
 interface UserBioProps {
   currentUser?: string;
@@ -36,6 +37,9 @@ const UserBio: React.FC<UserBioProps> = ({
         </div>
         <div className="flex flex-col mt-4">
           <p className="text-white">{bio}</p>
+          <div className="flex flex-row items-center gap-2 mt-4 text-neutral-500">
+            <BiCalendar size={24} /> <p> Joined {newDate}</p>
+          </div>
         </div>
       </div>
     </div>
