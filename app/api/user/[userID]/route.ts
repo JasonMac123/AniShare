@@ -17,6 +17,11 @@ export async function GET(
       where: {
         id: userID,
       },
+      include: {
+        posts: true,
+        followedBy: true,
+        following: true,
+      },
     });
 
     return NextResponse.json(user);
