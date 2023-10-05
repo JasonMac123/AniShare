@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import Header from "@/app/components/Header";
+import UserCover from "@/app/components/UserCover";
 
 interface UserViewPageProps {
   userId?: string;
@@ -14,6 +15,7 @@ const UserView = async ({ params }: { params: UserViewPageProps }) => {
   return (
     <>
       <Header label={userData.data.username} />
+      <UserCover userId={userData.data.id} user={userData.data} />
     </>
   );
 };
