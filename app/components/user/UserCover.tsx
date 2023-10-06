@@ -13,7 +13,7 @@ interface UserCoverProps {
 const UserCover: React.FC<UserCoverProps> = ({ user }) => {
   return (
     <div>
-      <div className="bg-neutral-700 h-44 relative">
+      <div className="bg-silver h-44 relative">
         {user.coverImage && (
           <Image
             src={user.coverImage}
