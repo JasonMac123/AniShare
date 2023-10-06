@@ -7,6 +7,9 @@ import FollowBar from "./components/layout/FollowBar";
 import LoginModal from "./components/modal/LoginModal";
 import RegisterModal from "./components/modal/RegisterModal";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import getCurrentUser from "./functions/getCurrentUser";
 
 export const metadata = {
@@ -27,6 +30,7 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <div className="h-screen bg-davyGray">
+          <ToastContainer />
           <LoginModal />
           <RegisterModal />
           {/*Add light mode version */}
