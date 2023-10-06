@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ label, disableBack }) => {
   return (
     <div className="p-5">
       <div className="flex flex-row items-center gap-2 text-isabelline">
-        {disableBack && (
+        {!disableBack && (
           <BiArrowBack
             onClick={handleBack}
             className="cursor-pointer hover:opacity-90 transition"
