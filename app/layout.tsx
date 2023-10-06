@@ -43,7 +43,7 @@ export default async function RootLayout({
             pauseOnHover
             theme="dark"
           />
-          <EditModal />
+          <EditModal userId={currentUser.id} />
           <LoginModal />
           <RegisterModal />
           {/*Add light mode version */}
