@@ -6,6 +6,7 @@ import UserMenu from "./components/layout/usermenu/UserMenu";
 import FollowBar from "./components/layout/FollowBar";
 import LoginModal from "./components/modal/LoginModal";
 import RegisterModal from "./components/modal/RegisterModal";
+import EditModal from "./components/modal/EditModal";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -42,6 +43,7 @@ export default async function RootLayout({
             pauseOnHover
             theme="dark"
           />
+          <EditModal />
           <LoginModal />
           <RegisterModal />
           {/*Add light mode version */}
