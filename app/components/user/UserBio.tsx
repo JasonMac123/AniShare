@@ -1,9 +1,11 @@
 "use client";
 
 import { useMemo } from "react";
-import { format } from "date-fns";
-import Button from "../input/Button";
 import { BiCalendar } from "react-icons/bi";
+import { format } from "date-fns";
+
+import Button from "../input/Button";
+import useEdit from "../hooks/useEditModal";
 
 interface UserBioProps {
   currentUser?: string;
@@ -26,11 +28,13 @@ const UserBio: React.FC<UserBioProps> = ({
     return format(new Date(createdAt), "MMMM yyyy");
   }, [createdAt]);
 
+  const editModal = useEdit();
+
   return (
     <div className="border-b-[1px] border-neutral-800 pb-4">
       <div className="flex justify-end p-2">
         {currentUser ? (
-          <Button secondary label="Edit" onClick={() => {}} />
+          <Button secondary label="Edit" onClick={editModal.onOpen} />
         ) : (
           <Button onClick={() => {}} label="Follow" secondary />
         )}
