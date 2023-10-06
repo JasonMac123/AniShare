@@ -30,7 +30,18 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <div className="h-screen bg-davyGray">
-          <ToastContainer />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
           <LoginModal />
           <RegisterModal />
           {/*Add light mode version */}
