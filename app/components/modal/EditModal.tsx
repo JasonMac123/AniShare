@@ -6,12 +6,13 @@ import { SubmitHandler, FieldValues, useForm } from "react-hook-form";
 import useEdit from "../hooks/useEditModal";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { safeUser } from "@/app/types";
 
 interface EditModalProps {
-  userId?: string;
+  user: safeUser | null;
 }
 
-const Editmodal: React.FC<EditModalProps> = ({ userId }) => {
+const Editmodal: React.FC<EditModalProps> = ({ user }) => {
   const editModal = useEdit();
   const [loading, setLoading] = useState(false);
 
@@ -34,7 +35,7 @@ const Editmodal: React.FC<EditModalProps> = ({ userId }) => {
     axios
       .patch("/api/edit", {
         ...data,
-        id: userId,
+        id: user?.id,
       })
       .then(() => {
         editModal.onClose();
