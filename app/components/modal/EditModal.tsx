@@ -7,6 +7,7 @@ import useEdit from "../hooks/useEditModal";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { safeUser } from "@/app/types";
+import { useRouter } from "next/navigation";
 
 interface EditModalProps {
   user: safeUser | null;
@@ -15,6 +16,7 @@ interface EditModalProps {
 const Editmodal: React.FC<EditModalProps> = ({ user }) => {
   const editModal = useEdit();
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -39,6 +41,7 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
       })
       .then(() => {
         editModal.onClose();
+        router.refresh();
       })
       .catch((error) => {
         toast("Something went wrong");
