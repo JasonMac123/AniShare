@@ -8,6 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 import useEdit from "../hooks/useEditModal";
+import InputForm from "../input/InputForm";
 import Modal from "./Modal";
 
 import { safeUser } from "@/app/types";
@@ -27,10 +28,10 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      username: "",
-      bio: "",
-      coverImage: "",
-      profileImage: "",
+      username: user?.name,
+      bio: user?.bio,
+      coverImage: user?.coverImage,
+      profileImage: user?.profileImage,
     },
   });
 
@@ -54,6 +55,27 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
       });
   };
 
+  const bodyContent = (
+    <div className="flex flex-col gap-4">
+      <InputForm
+        id="username"
+        label="Username"
+        type="text"
+        disabled={loading}
+        register={register}
+        errors={errors}
+      />
+      <InputForm
+        id="bio"
+        label="Bio"
+        type="text"
+        disabled={loading}
+        register={register}
+        errors={errors}
+      />
+    </div>
+  );
+
   return (
     <Modal
       disabled={loading}
@@ -62,6 +84,7 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
       actionLabel="Save"
       onClose={editModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
+      body={bodyContent}
     />
   );
 };
