@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, FieldValues, useForm } from "react-hook-form";
 
-import useEdit from "../hooks/useEditModal";
 import axios from "axios";
 import { toast } from "react-toastify";
+
+import useEdit from "../hooks/useEditModal";
+import Modal from "./Modal";
+
 import { safeUser } from "@/app/types";
-import { useRouter } from "next/navigation";
 
 interface EditModalProps {
   user: safeUser | null;
@@ -51,7 +54,16 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
       });
   };
 
-  return <div></div>;
+  return (
+    <Modal
+      disabled={loading}
+      isOpen={editModal.isOpen}
+      title="Edit Profile"
+      actionLabel="Save"
+      onClose={editModal.onClose}
+      onSubmit={handleSubmit(onSubmit)}
+    />
+  );
 };
 
 export default Editmodal;
