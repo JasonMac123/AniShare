@@ -71,7 +71,20 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <ImageUpload />
+      <ImageUpload
+        label="Cover Image"
+        value={coverImage}
+        onChange={(value) => {
+          setFormValue("coverImage", value);
+        }}
+      />
+      <ImageUpload
+        label="Profile Image"
+        value={profileImage}
+        onChange={(value) => {
+          setFormValue("profileImage", value);
+        }}
+      />
       <InputForm
         id="username"
         label="Username"
