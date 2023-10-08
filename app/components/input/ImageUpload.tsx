@@ -34,6 +34,16 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     [handleUpload]
   );
 
+  const { getRootProps, getInputProps } = useDropzone({
+    maxFiles: 1,
+    onDrop: handleDrop,
+    disabled,
+    accept: {
+      "image/jpeg": [],
+      "image/png": [],
+    },
+  });
+
   return <div></div>;
 };
 
