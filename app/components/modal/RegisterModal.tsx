@@ -11,7 +11,6 @@ import Button from "../input/Button";
 
 import useLogin from "../hooks/useLoginModal";
 import useRegister from "../hooks/useRegisterModal";
-import { error } from "console";
 
 const RegisterModal = () => {
   const loginModal = useLogin();
