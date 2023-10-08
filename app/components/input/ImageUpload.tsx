@@ -58,7 +58,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           <Image src={value} height={100} width={100} alt="Uploaded Image" />
         </div>
       ) : (
-        <p className="text-white">{label}</p>
+        <p className="text-black">{label}</p>
       )}
     </div>
   );
