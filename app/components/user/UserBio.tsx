@@ -14,6 +14,7 @@ interface UserBioProps {
   bio: string;
   following: number;
   followers: number;
+  userId: string;
 }
 
 const UserBio: React.FC<UserBioProps> = ({
@@ -23,6 +24,7 @@ const UserBio: React.FC<UserBioProps> = ({
   bio,
   following,
   followers,
+  userId,
 }) => {
   const newDate = useMemo(() => {
     return format(new Date(createdAt), "MMMM yyyy");
@@ -33,7 +35,7 @@ const UserBio: React.FC<UserBioProps> = ({
   return (
     <div className="border-b-[1px] border-neutral-800 pb-4">
       <div className="flex justify-end p-2">
-        {currentUser ? (
+        {currentUser === userId ? (
           <Button secondary label="Edit" onClick={editModal.onOpen} />
         ) : (
           <Button onClick={() => {}} label="Follow" secondary />

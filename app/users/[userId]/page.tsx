@@ -26,6 +26,7 @@ const UserView = async ({ params }: { params: UserViewPageProps }) => {
         bio={userData.data.bio}
         followers={userData.data.followedBy.length}
         following={userData.data.following.length}
+        userId={params.userId}
       />
     </>
   );
