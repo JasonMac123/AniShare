@@ -27,7 +27,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       const reader = new FileReader();
 
       reader.onload = (event: any) => {
-        handleUpload(event.target.results);
+        handleUpload(event.target.result);
       };
 
       reader.readAsDataURL(file);
@@ -49,7 +49,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     <div
       {...getRootProps({
         className:
-          "w-full p-4 text-white text-center border-2 border-dotted rounded-md border-neutral-700 cursor-pointer bg-white",
+          "w-full p-4 text-black text-center border-2 border-dotted rounded-md border-neutral-700 cursor-pointer bg-white",
       })}
     >
       <input {...getInputProps()} />
