@@ -25,6 +25,8 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
 
   const {
     register,
+    watch,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
@@ -35,6 +37,17 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
       profileImage: user?.profileImage,
     },
   });
+
+  const coverImage = watch("coverImage");
+  const profileImage = watch("profileImage");
+
+  const setFormValue = (id: string, value: any) => {
+    setValue(id, value, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+  };
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setLoading(true);
