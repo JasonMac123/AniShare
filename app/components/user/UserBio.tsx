@@ -14,7 +14,7 @@ interface UserBioProps {
   bio: string;
   following: number;
   followers: number;
-  userId: string;
+  userId?: string;
 }
 
 const UserBio: React.FC<UserBioProps> = ({
