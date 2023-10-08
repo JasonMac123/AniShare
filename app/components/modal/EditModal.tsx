@@ -15,7 +15,7 @@ import ImageUpload from "../input/ImageUpload";
 import { safeUser } from "@/app/types";
 
 interface EditModalProps {
-  user: safeUser | null;
+  user: safeUser;
 }
 
 const Editmodal: React.FC<EditModalProps> = ({ user }) => {
@@ -31,10 +31,10 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      username: user?.name,
-      bio: user?.bio,
-      coverImage: user?.coverImage,
-      profileImage: user?.profileImage,
+      username: user.username,
+      bio: user.bio,
+      coverImage: user.coverImage,
+      profileImage: user.profileImage,
     },
   });
 
