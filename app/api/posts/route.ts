@@ -8,6 +8,10 @@ export async function POST(request: NextRequest) {
     const user = await getCurrentUser();
     const { body } = await request.json();
 
+    if (!user) {
+      throw new Error("Not signed in");
+    }
+
     const post = await prisma.post.create({
       data: {
         body,
