@@ -5,8 +5,17 @@ import getCurrentUser from "../../functions/getCurrentUser";
 
 export async function POST(request: NextRequest) {
   try {
-    const user = getCurrentUser();
+    const user = await getCurrentUser();
     const { body } = await request.json();
+
+    const post = await prisma.post.create({
+      data: {
+        body,
+        userId: user.id,
+      },
+    });
+
+    return NextResponse.json(post);
   } catch (error: any) {
     throw new Error(error);
   }
