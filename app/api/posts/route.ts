@@ -6,7 +6,7 @@ import getCurrentUser from "../../functions/getCurrentUser";
 export async function POST(request: NextRequest) {
   try {
     const user = getCurrentUser();
-    const { body } = request.body;
+    const { body } = await request.json();
   } catch (error: any) {
     throw new Error(error);
   }
