@@ -1,9 +1,12 @@
 import { NextResponse, NextRequest } from "next/server";
 
 import prisma from "../../prisma/prismadb";
+import getCurrentUser from "../../functions/getCurrentUser";
 
 export async function POST(request: NextRequest) {
   try {
+    const user = getCurrentUser();
+    const { body } = request.body;
   } catch (error: any) {
     throw new Error(error);
   }
