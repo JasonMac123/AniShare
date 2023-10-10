@@ -12,6 +12,7 @@ import useRegister from "../hooks/useRegisterModal";
 import InputForm from "./InputForm";
 import Button from "./Button";
 import { safeUser } from "@/app/types";
+import ImageUpload from "./ImageUpload";
 
 interface FormProps {
   placeholder: string;
@@ -35,13 +36,25 @@ const Form: React.FC<FormProps> = ({
 
   const {
     register,
+    watch,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
       body: "",
+      image: "",
     },
   });
+
+  const image = watch("image");
+  const setFormValue = (id: string, value: any) => {
+    setValue(id, value, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+  };
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setLoading(true);
@@ -81,6 +94,13 @@ const Form: React.FC<FormProps> = ({
             register={register}
             errors={errors}
             required
+          />
+          <ImageUpload
+            label="Image"
+            value={image}
+            onChange={(value) => {
+              setFormValue("image", value);
+            }}
           />
         </div>
       )}
