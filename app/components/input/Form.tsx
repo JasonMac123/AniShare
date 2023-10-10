@@ -72,18 +72,18 @@ const Form: React.FC<FormProps> = ({
           </div>
         </div>
       ) : (
-        <div></div>
+        <div>
+          <InputForm
+            id="body"
+            label="Body"
+            type="text"
+            disabled={loading}
+            register={register}
+            errors={errors}
+            required
+          />
+        </div>
       )}
-
-      <InputForm
-        id="body"
-        label="Body"
-        type="text"
-        disabled={loading}
-        register={register}
-        errors={errors}
-        required
-      />
     </div>
   );
 };
