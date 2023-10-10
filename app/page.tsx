@@ -1,11 +1,14 @@
 import Header from "./components/Header";
 import Form from "./components/input/Form";
+import getCurrentUser from "./functions/getCurrentUser";
 
-export default function Home() {
+export default async function Home() {
+  const user = await getCurrentUser();
+
   return (
     <>
       <Header label="Home" disableBack />
-      <Form />
+      <Form user={user} placeholder="Write Something!" />
     </>
   );
 }
