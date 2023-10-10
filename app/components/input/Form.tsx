@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
-import getCurrentUser from "@/app/functions/getCurrentUser";
 import useLogin from "../hooks/useLoginModal";
 import useRegister from "../hooks/useRegisterModal";
 
