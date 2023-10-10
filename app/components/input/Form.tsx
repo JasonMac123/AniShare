@@ -11,18 +11,24 @@ import useRegister from "../hooks/useRegisterModal";
 
 import InputForm from "./InputForm";
 import Button from "./Button";
+import { safeUser } from "@/app/types";
 
 interface FormProps {
   placeholder: string;
   isComment?: boolean;
   postId?: string;
+  user: safeUser | null;
 }
 
-const Form: React.FC<FormProps> = ({ placeholder, isComment, postId }) => {
+const Form: React.FC<FormProps> = ({
+  placeholder,
+  isComment,
+  postId,
+  user,
+}) => {
   const loginModal = useLogin();
   const registerModal = useRegister();
 
-  const user = await getCurrentUser();
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
@@ -55,7 +61,7 @@ const Form: React.FC<FormProps> = ({ placeholder, isComment, postId }) => {
 
   return (
     <div className="border-b-[1px] border-neutral-800 px-5 py-2">
-      {user ? (
+      {!user ? (
         <div className="py-8">
           <h1 className="text-white text-2xl text-center mb-4 font-bold">
             Welcome to AniShare
