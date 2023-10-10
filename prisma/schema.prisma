@@ -32,6 +32,7 @@ model User {
 model Post {
   id        String    @id @default(uuid())
   body      String
+  image     String?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   authorId  String
