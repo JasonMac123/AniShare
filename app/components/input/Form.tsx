@@ -12,20 +12,15 @@ import InputForm from "./InputForm";
 import Button from "./Button";
 import { safeUser } from "@/app/types";
 import ImageUpload from "./ImageUpload";
+import Avatar from "../user/Avatar";
 
 interface FormProps {
-  placeholder: string;
   isComment?: boolean;
   postId?: string;
   user: safeUser | null;
 }
 
-const Form: React.FC<FormProps> = ({
-  placeholder,
-  isComment,
-  postId,
-  user,
-}) => {
+const Form: React.FC<FormProps> = ({ isComment, postId, user }) => {
   const loginModal = useLogin();
   const registerModal = useRegister();
 
@@ -84,7 +79,10 @@ const Form: React.FC<FormProps> = ({
           </div>
         </div>
       ) : (
-        <div>
+        <div className="flex flex-row gap-4">
+          <div>
+            <Avatar userId={user.id} userImage={user.profileImage} />
+          </div>
           <InputForm
             id="body"
             label="Body"

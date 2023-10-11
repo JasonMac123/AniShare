@@ -8,7 +8,7 @@ export default async function Home() {
   return (
     <>
       <Header label="Home" disableBack />
-      <Form user={user} placeholder="Write Something!" />
+      <Form user={user} />
     </>
   );
 }
