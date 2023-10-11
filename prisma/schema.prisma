@@ -16,7 +16,7 @@ model User {
   email           String?        @unique
   emailVerified   DateTime?
   image           String?
-  coverImage      String?
+  coverImage      String?  
   profileImage    String?
   hashedPassword  String?
   createdAt       DateTime       @default(now())
@@ -32,7 +32,7 @@ model User {
 model Post {
   id        String    @id @default(uuid())
   body      String
-  image     String?
+  image     String?   @db.LongText
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   authorId  String
