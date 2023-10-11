@@ -16,8 +16,8 @@ model User {
   email           String?        @unique
   emailVerified   DateTime?
   image           String?
-  coverImage      String?  
-  profileImage    String?
+  coverImage      String?        @db.LongText()
+  profileImage    String?        @db.LongText()
   hashedPassword  String?
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @updatedAt
