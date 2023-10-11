@@ -57,7 +57,7 @@ const Form: React.FC<FormProps> = ({ isComment, postId, user }) => {
     setLoading(true);
 
     axios
-      .post("/api/posts", data)
+      .post("/api/posts", { ...data })
       .then(() => {
         toast("Post Created");
       })

@@ -6,7 +6,7 @@ import getCurrentUser from "../../functions/getCurrentUser";
 export async function POST(request: NextRequest) {
   try {
     const user = await getCurrentUser();
-    const { body } = await request.json();
+    const { body, image } = await request.json();
 
     if (!user) {
       throw new Error("Not signed in");
@@ -14,8 +14,9 @@ export async function POST(request: NextRequest) {
 
     const post = await prisma.post.create({
       data: {
-        ...body,
-        userId: user.id,
+        body: body,
+        image: image,
+        authorId: user.id,
       },
     });
 
