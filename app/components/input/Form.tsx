@@ -83,22 +83,31 @@ const Form: React.FC<FormProps> = ({ isComment, postId, user }) => {
           <div>
             <Avatar userId={user.id} userImage={user.profileImage} />
           </div>
-          <InputForm
-            id="body"
-            label="Body"
-            type="text"
-            disabled={loading}
-            register={register}
-            errors={errors}
-            required
-          />
-          <ImageUpload
-            label="Image"
-            value={image}
-            onChange={(value) => {
-              setFormValue("image", value);
-            }}
-          />
+          <div>
+            <InputForm
+              id="body"
+              label="Body"
+              type="text"
+              disabled={loading}
+              register={register}
+              errors={errors}
+              required
+            />
+            <ImageUpload
+              label="Image"
+              value={image}
+              onChange={(value) => {
+                setFormValue("image", value);
+              }}
+            />
+          </div>
+          <div className="mt-4 flex flex-row justify-end">
+            <Button
+              label="Post"
+              disabled={loading}
+              onClick={handleSubmit(onSubmit)}
+            />
+          </div>
         </div>
       )}
     </div>
