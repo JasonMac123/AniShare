@@ -1,3 +1,5 @@
+"use client";
+
 import { useRouter } from "next/navigation";
 
 import axios from "axios";
@@ -80,36 +82,39 @@ const Form: React.FC<FormProps> = ({ isComment, postId, user }) => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-row gap-4">
-          <div>
-            <Avatar userId={user.id} userImage={user.profileImage} />
-          </div>
-          <div>
-            <InputForm
-              id="body"
-              label="Body"
-              type="text"
-              disabled={loading}
-              register={register}
-              errors={errors}
-              required
-            />
-            <ImageUpload
-              label="Image"
-              value={image}
-              onChange={(value) => {
-                setFormValue("image", value);
-              }}
-            />
+        <>
+          <div className="flex flex-row gap-4">
+            <div>
+              <Avatar userId={user.id} userImage={user.profileImage} />
+            </div>
+            <div className="w-full space-y-4">
+              <InputForm
+                id="body"
+                label="Body"
+                type="text"
+                disabled={loading}
+                register={register}
+                errors={errors}
+                required
+              />
+              <ImageUpload
+                label="Image"
+                value={image}
+                onChange={(value) => {
+                  setFormValue("image", value);
+                }}
+              />
+            </div>
           </div>
           <div className="mt-4 flex flex-row justify-end">
             <Button
               label="Post"
               disabled={loading || !body}
               onClick={handleSubmit(onSubmit)}
+              large
             />
           </div>
-        </div>
+        </>
       )}
     </div>
   );
