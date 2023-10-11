@@ -42,6 +42,7 @@ const Form: React.FC<FormProps> = ({ isComment, postId, user }) => {
   });
 
   const image = watch("image");
+  const body = watch("body");
   const setFormValue = (id: string, value: any) => {
     setValue(id, value, {
       shouldDirty: true,
@@ -104,7 +105,7 @@ const Form: React.FC<FormProps> = ({ isComment, postId, user }) => {
           <div className="mt-4 flex flex-row justify-end">
             <Button
               label="Post"
-              disabled={loading}
+              disabled={loading || !body}
               onClick={handleSubmit(onSubmit)}
             />
           </div>
