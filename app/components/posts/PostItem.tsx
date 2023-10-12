@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { formatDistanceToNowStrict } from "date-fns";
 
 import useLogin from "../hooks/useLoginModal";
+import Avatar from "../user/Avatar";
 
 interface PostItemProps {
   userId: string;
@@ -29,7 +30,16 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data }) => {
     return formatDistanceToNowStrict(new Date(data.createdAt));
   }, [data.createdAt]);
 
-  return <div></div>;
+  return (
+    <div
+      onClick={redirectPostPage}
+      className="border-b-[1px] border-neutral-800 hover:bg-neutral-900 cursor-pointer transition"
+    >
+      <div className="flex flex-row items-start gap-3">
+        <Avatar userId={data.authorId} userImage={data.author.profileImage} />
+      </div>
+    </div>
+  );
 };
 
 export default PostItem;
