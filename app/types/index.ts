@@ -12,4 +12,5 @@ export type safeUser = Omit<
 export type SafePost = Omit<Post, "createdAt" | "updatedAt"> & {
   createdAt: string;
   updatedAt: string;
+  author: safeUser;
 };
