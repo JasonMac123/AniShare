@@ -15,7 +15,6 @@ model User {
   bio             String?
   email           String?        @unique
   emailVerified   DateTime?
-  image           String?
   coverImage      String?        @db.LongText()
   profileImage    String?        @db.LongText()
   hashedPassword  String?
