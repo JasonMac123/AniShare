@@ -32,6 +32,9 @@ export async function GET(request: NextRequest) {
       orderBy: {
         createdAt: "desc",
       },
+      include: {
+        author: true,
+      },
     });
     return NextResponse.json(posts);
   } catch (error: any) {
