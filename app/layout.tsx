@@ -30,7 +30,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="h-screen bg-davyGray">
+        <div className=" bg-davyGray">
           <ToastContainer
             position="top-right"
             autoClose={5000}
