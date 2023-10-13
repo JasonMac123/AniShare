@@ -26,7 +26,7 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data }) => {
     router.push(`/posts/${data.id}`);
   }, [router, data.id]);
 
-  const newDate = useMemo(() => {
+  const dateSincePost = useMemo(() => {
     return formatDistanceToNowStrict(new Date(data.createdAt));
   }, [data.createdAt]);
 
@@ -39,9 +39,15 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data }) => {
         <Avatar userId={data.authorId} userImage={data.author.profileImage} />
         <div>
           <div className="flex flex-row items-center gap-2">
-            <p className="text-white font-semibold cursor-pointer hover:underline">
-              {data.author.username}
+            <p
+              className="text-white font-semibold cursor-pointer hover:underline"
+              onClick={redirectUserPage}
+            >
+              @{data.author.username}
             </p>
+            <span className="text-neutral-100 text-sm">
+              {dateSincePost} ago
+            </span>
           </div>
         </div>
       </div>
