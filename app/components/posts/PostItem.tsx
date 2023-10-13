@@ -33,7 +33,7 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data }) => {
   return (
     <div
       onClick={redirectPostPage}
-      className="border-b-[1px] border-neutral-800 hover:bg-neutral-900 cursor-pointer transition"
+      className="border-b-[1px] border-neutral-800 hover:bg-neutral-900 cursor-pointer transition p-4"
     >
       <div className="flex flex-row items-start gap-3">
         <Avatar userId={data.authorId} userImage={data.author.profileImage} />
