@@ -8,6 +8,7 @@ import { formatDistanceToNowStrict } from "date-fns";
 
 import useLogin from "../hooks/useLoginModal";
 import Avatar from "../user/Avatar";
+import Image from "next/image";
 
 interface PostItemProps {
   userId: string;
@@ -49,6 +50,16 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data }) => {
               {dateSincePost} ago
             </span>
           </div>
+          {data.image ? (
+            <div className="flex flex-col w-full">
+              <div>
+                <Image alt="image associated with the post" src={data.image} />
+              </div>
+              <div className="text-white mt-1">{data.body}</div>
+            </div>
+          ) : (
+            <div className="text-white mt-1">{data.body}</div>
+          )}
         </div>
       </div>
     </div>
