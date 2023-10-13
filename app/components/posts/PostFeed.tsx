@@ -11,7 +11,7 @@ const PostFeed: React.FC<PostFeedProps> = ({ posts }) => {
   return (
     <>
       {posts.map((post: SafePost) => {
-        <PostItem userId={post.authorId} key={post.id} data={post} />;
+        return <PostItem userId={post.authorId} key={post.id} data={post} />;
       })}
     </>
   );
