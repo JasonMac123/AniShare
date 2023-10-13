@@ -3,10 +3,12 @@
 import { SafePost } from "@/app/types";
 
 import { useCallback, useMemo } from "react";
+import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { formatDistanceToNowStrict } from "date-fns";
 
 import useLogin from "../hooks/useLoginModal";
+
 import Avatar from "../user/Avatar";
 import Image from "next/image";
 
@@ -53,13 +55,30 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data }) => {
           {data.image ? (
             <div className="flex flex-col w-full">
               <div>
-                <Image alt="image associated with the post" src={data.image} />
+                <Image
+                  alt="image associated with the post"
+                  src={data.image}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="w-full h-full min-w-[150px] min-h-[150px]"
+                />
               </div>
               <div className="text-white mt-1">{data.body}</div>
             </div>
           ) : (
             <div className="text-white mt-1">{data.body}</div>
           )}
+          <div className="flex flex-row items-center mt-3 gap-10">
+            <div className="flex flex-row items-center text-neutral-500 gap-2 cursor-pointer transition hover:text-white">
+              <AiOutlineMessage size={20} />
+              <p>{data.comment?.length || 0}</p>
+            </div>
+            <div className="flex flex-row items-center text-neutral-500 gap-2 cursor-pointer transition hover:text-white">
+              <AiOutlineHeart size={20} />
+              <p>{data.comment?.length || 0}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
