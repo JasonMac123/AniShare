@@ -46,7 +46,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   });
 
   return (
-    <div className="bg-white p-4 rounded-xl flex items-center justify-center">
+    <div className="bg-white p-8 rounded-xl flex items-center justify-center">
       <div
         {...getRootProps({
           className:
