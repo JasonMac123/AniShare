@@ -22,13 +22,21 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data, user }) => {
   const router = useRouter();
   const loginModal = useLogin();
 
-  const redirectUserPage = useCallback(() => {
-    router.push(`/users/${data.authorId}`);
-  }, [router, data.authorId]);
+  const redirectUserPage = useCallback(
+    (event: any) => {
+      event.stopPropagation();
+      router.push(`/users/${data.authorId}`);
+    },
+    [router, data.authorId]
+  );
 
-  const redirectPostPage = useCallback(() => {
-    router.push(`/posts/${data.id}`);
-  }, [router, data.id]);
+  const redirectPostPage = useCallback(
+    (event: any) => {
+      event.stopPropagation();
+      router.push(`/posts/${data.id}`);
+    },
+    [router, data.id]
+  );
 
   const dateSincePost = useMemo(() => {
     return formatDistanceToNowStrict(new Date(data.createdAt));
