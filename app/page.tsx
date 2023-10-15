@@ -14,7 +14,7 @@ export default async function Home() {
     <>
       <Header label="Home" disableBack />
       <Form user={user} />
-      <PostFeed posts={posts.data} />
+      <PostFeed posts={posts.data} user={user} />
     </>
   );
 }

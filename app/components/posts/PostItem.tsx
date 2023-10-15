@@ -1,6 +1,6 @@
 "use client";
 
-import { SafePost } from "@/app/types";
+import { SafePost, safeUser } from "@/app/types";
 
 import { useCallback, useMemo } from "react";
 import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
@@ -15,9 +15,10 @@ import Image from "next/image";
 interface PostItemProps {
   userId: string;
   data: SafePost;
+  user: safeUser | null;
 }
 
-const PostItem: React.FC<PostItemProps> = ({ userId, data }) => {
+const PostItem: React.FC<PostItemProps> = ({ userId, data, user }) => {
   const router = useRouter();
   const loginModal = useLogin();
 
