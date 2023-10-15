@@ -33,6 +33,12 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data }) => {
     return formatDistanceToNowStrict(new Date(data.createdAt));
   }, [data.createdAt]);
 
+  const onLike = useCallback(() => {
+    if (!user) {
+      loginModal.onOpen;
+    }
+  }, []);
+
   return (
     <div
       onClick={redirectPostPage}
@@ -74,7 +80,10 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data }) => {
               <AiOutlineMessage size={20} />
               <p>{data.comment?.length || 0}</p>
             </div>
-            <div className="flex flex-row items-center text-neutral-500 gap-2 cursor-pointer transition hover:text-white">
+            <div
+              className="flex flex-row items-center text-neutral-500 gap-2 cursor-pointer transition hover:text-red-500"
+              onClick={onLike}
+            >
               <AiOutlineHeart size={20} />
               <p>{data.comment?.length || 0}</p>
             </div>
