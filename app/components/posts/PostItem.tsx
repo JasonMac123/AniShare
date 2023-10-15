@@ -43,11 +43,11 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data, user }) => {
   return (
     <div
       onClick={redirectPostPage}
-      className="border-b-[1px] border-neutral-800 hover:bg-neutral-900 cursor-pointer transition p-4"
+      className="border-b-[1px] border-neutral-800 hover:bg-neutral-900 cursor-pointer transition p-4 pr-8"
     >
       <div className="flex flex-row items-start gap-3">
         <Avatar userId={data.authorId} userImage={data.author.profileImage} />
-        <div>
+        <div className="w-full">
           <div className="flex flex-row items-center gap-2">
             <p
               className="text-white font-semibold cursor-pointer hover:underline"
@@ -61,7 +61,7 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data, user }) => {
           </div>
           {data.image ? (
             <div className="flex flex-col w-full">
-              <div>
+              <div className="w-full">
                 <Image
                   alt="image associated with the post"
                   src={data.image}
