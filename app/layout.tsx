@@ -46,7 +46,6 @@ export default async function RootLayout({
           {currentUser && <EditModal user={currentUser} />}
           <LoginModal />
           <RegisterModal />
-          {/*Add light mode version */}
           <div className="grid grid-cols-4 h-full mx-auto xl:w-2/3 lg:w-3/4 w-full">
             <UserMenu currentUser={currentUser} />
             <div className="w-full col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
