@@ -7,8 +7,17 @@ export type SafeUser = Omit<
   createdAt: string;
   updatedAt: string;
   emailVerified: string | null;
-  following: SafeUser[];
-  followedBy: SafeUser[];
+  following: SafeUserSingleTable[];
+  followedBy: SafeUserSingleTable[];
+};
+
+export type SafeUserSingleTable = Omit<
+  User,
+  "createdAt" | "updatedAt" | "emailVerified"
+> & {
+  createdAt: string;
+  updatedAt: string;
+  emailedVerified: string | null;
 };
 
 export type SafePost = Omit<Post, "createdAt" | "updatedAt"> & {
