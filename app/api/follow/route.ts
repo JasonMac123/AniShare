@@ -52,10 +52,7 @@ export async function DELETE(request: NextRequest) {
     }
 
     const updatedUser = await prisma.userFollows.delete({
-      where: {
-        A: currentUser.id,
-        B: user.id,
-      },
+      where: { A_B: { A: currentUser.id, B: userId } },
     });
 
     return NextResponse.json(updatedUser);
