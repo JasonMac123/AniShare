@@ -16,7 +16,7 @@ const FollowBar: React.FC<FollowBarProps> = ({ users }) => {
           {users.map((user: SafeUser) => {
             return (
               <div key={user.id} className="flex flex-row gap-4">
-                <Avatar userId={user.id} userImage={user.image} />
+                <Avatar userId={user.id} userImage={user.profileImage} />
                 <div className="flex flex-col">
                   <p className="text-white font-semibold text-sm">
                     @{user.username}

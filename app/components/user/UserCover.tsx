@@ -23,7 +23,12 @@ const UserCover: React.FC<UserCoverProps> = ({ user }) => {
           />
         )}
         <div className="absolute -bottom-16 left-4">
-          <Avatar userId={user.id} isLarge hasBorder userImage={user.image} />
+          <Avatar
+            userId={user.id}
+            isLarge
+            hasBorder
+            userImage={user.profileImage}
+          />
         </div>
       </div>
     </div>
