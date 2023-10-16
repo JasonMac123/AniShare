@@ -28,8 +28,6 @@ export default async function getCurrentUser() {
       return null;
     }
 
-    console.log(currentUser);
-
     return {
       ...currentUser,
       createdAt: currentUser.createdAt.toISOString(),
