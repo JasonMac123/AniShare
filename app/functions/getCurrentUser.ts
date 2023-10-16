@@ -18,6 +18,10 @@ export default async function getCurrentUser() {
       where: {
         email: session.user.email as string,
       },
+      include: {
+        following: true,
+        followedBy: true,
+      },
     });
 
     if (!currentUser) {
