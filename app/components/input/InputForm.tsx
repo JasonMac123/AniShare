@@ -11,6 +11,7 @@ interface InputProps {
   type?: string;
   disabled?: boolean;
   required?: boolean;
+  big?: boolean;
 }
 
 const InputForm: React.FC<InputProps> = ({
@@ -22,9 +23,10 @@ const InputForm: React.FC<InputProps> = ({
   type,
   disabled,
   required,
+  big,
 }) => {
   return (
-    <div className="w-full relative">
+    <div className={`w-full relative ${big ? "h-40" : ""}`}>
       <input
         id={id}
         disabled={disabled}
@@ -33,7 +35,7 @@ const InputForm: React.FC<InputProps> = ({
         placeholder=" "
         type={type}
         className={`w-full peer p-4 pt-6 text-lg bg-white border-2 rounded-md outline-none focus:border-2 disabled:bg-red-300 disabled:opacity-70 disabled:cursor-not-allowed
-
+        ${big ? "h-full" : ""}
         ${errors[id] ? "border-rose-600" : "border-melon"} 
         ${errors[id] ? "focus:border-rose-600" : "focus:border-black"}`}
       />

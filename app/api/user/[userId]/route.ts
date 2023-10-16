@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import prisma from "@/app/prisma/prismadb";
 
 interface getUserDetailsParams {
-  userID?: string;
+  userId?: string;
 }
 
 export async function GET(
@@ -11,11 +11,11 @@ export async function GET(
   { params }: { params: getUserDetailsParams }
 ) {
   try {
-    const { userID } = params;
+    const { userId } = params;
 
     const user = await prisma.user.findUnique({
       where: {
-        id: userID,
+        id: userId,
       },
       include: {
         posts: true,

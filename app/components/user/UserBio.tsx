@@ -1,6 +1,9 @@
 "use client";
 
-import { useMemo } from "react";
+import axios from "axios";
+
+import { useCallback, useMemo } from "react";
+import { toast } from "react-toastify";
 import { BiCalendar } from "react-icons/bi";
 import { format } from "date-fns";
 
@@ -14,7 +17,7 @@ interface UserBioProps {
   bio: string;
   following: number;
   followers: number;
-  userId?: string;
+  userId: string;
 }
 
 const UserBio: React.FC<UserBioProps> = ({
@@ -32,13 +35,24 @@ const UserBio: React.FC<UserBioProps> = ({
 
   const editModal = useEdit();
 
+  const onFollow = useCallback(() => {
+    axios
+      .post("/api/follow", { userId })
+      .then(() => {
+        toast(`Followed ${username}`);
+      })
+      .catch((error) => {
+        toast(error);
+      });
+  }, [userId, currentUser]);
+
   return (
     <div className="border-b-[1px] border-neutral-800 pb-4">
       <div className="flex justify-end p-2">
         {currentUser === userId ? (
           <Button secondary label="Edit" onClick={editModal.onOpen} />
         ) : (
-          <Button onClick={() => {}} label="Follow" secondary />
+          <Button onClick={onFollow} label="Follow" secondary />
         )}
       </div>
       <div className="mt-8 px-4">

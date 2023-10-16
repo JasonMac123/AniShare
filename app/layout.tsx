@@ -29,8 +29,8 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body>
-        <div className="h-screen bg-davyGray">
+      <body className="bg-davyGray">
+        <div>
           <ToastContainer
             position="top-right"
             autoClose={5000}
@@ -46,10 +46,9 @@ export default async function RootLayout({
           {currentUser && <EditModal user={currentUser} />}
           <LoginModal />
           <RegisterModal />
-          {/*Add light mode version */}
-          <div className="grid grid-cols-4 h-full">
+          <div className="grid grid-cols-4 h-full mx-auto xl:w-2/3 lg:w-3/4 w-full">
             <UserMenu currentUser={currentUser} />
-            <div className="w-full col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
+            <div className="w-full h-full col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
               {children}
             </div>
             <FollowBar users={users.data} />

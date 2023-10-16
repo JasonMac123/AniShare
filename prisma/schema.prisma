@@ -15,9 +15,8 @@ model User {
   bio             String?
   email           String?        @unique
   emailVerified   DateTime?
-  image           String?
-  coverImage      String?
-  profileImage    String?
+  coverImage      String?        @db.LongText()
+  profileImage    String?        @db.LongText()
   hashedPassword  String?
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @updatedAt
@@ -32,6 +31,7 @@ model User {
 model Post {
   id        String    @id @default(uuid())
   body      String
+  image     String?   @db.LongText
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   authorId  String
