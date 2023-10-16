@@ -21,6 +21,17 @@ const UserFollowButton: React.FC<UserFollowButtonProps> = ({
   username,
 }) => {
   const onFollow = useCallback(() => {
+    if (currentUser.following.some((item) => item.id === userId)) {
+      axios
+        .delete("/api/follow", { data: { userId } })
+        .then(() => {
+          toast(`Unfollowed ${username}`);
+        })
+        .catch((error) => {
+          toast(error);
+        });
+    }
+
     axios
       .post("/api/follow", { userId })
       .then(() => {
