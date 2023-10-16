@@ -24,7 +24,7 @@ const UserView = async ({ params }: { params: UserViewPageProps }) => {
       <Header label={userData.data.username} />
       <UserCover userId={userData.data.id} user={userData.data} />
       <UserBio
-        currentUser={currrentUser?.id}
+        currentUser={currrentUser}
         createdAt={userData.data.createdAt}
         username={userData.data.username}
         bio={userData.data.bio}

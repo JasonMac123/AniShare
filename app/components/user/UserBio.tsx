@@ -9,9 +9,10 @@ import { format } from "date-fns";
 
 import Button from "../input/Button";
 import useEdit from "../hooks/useEditModal";
+import { SafeUser } from "@/app/types";
 
 interface UserBioProps {
-  currentUser?: string;
+  currentUser?: SafeUser | null;
   createdAt: string;
   username: string;
   bio: string;
@@ -46,10 +47,12 @@ const UserBio: React.FC<UserBioProps> = ({
       });
   }, [userId, currentUser]);
 
+  console.log(currentUser);
+
   return (
     <div className="border-b-[1px] border-neutral-800 pb-4">
       <div className="flex justify-end p-2">
-        {currentUser === userId ? (
+        {currentUser?.id === userId ? (
           <Button secondary label="Edit" onClick={editModal.onOpen} />
         ) : (
           <Button onClick={onFollow} label="Follow" secondary />
