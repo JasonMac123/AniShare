@@ -22,19 +22,11 @@ export async function POST(request: NextRequest) {
       throw new Error("Invalid following user Id");
     }
 
-    let updatedFollowingIds = [...currentUser.following];
-    updatedFollowingIds.push(user);
-
-    const updatedUser = await prisma.user.update({
-      where: {
-        id: currentUser.id,
-      },
-      data: {
-        following: updatedFollowingIds,
-      },
+    const updatedUserFollowing = await prisma.userFollows.create({
+      data: { A: currentUser.id, B: userId },
     });
 
-    return NextResponse.json(updatedUser);
+    return NextResponse.json(true);
   } catch (error: any) {
     throw new Error(error);
   }
@@ -59,17 +51,10 @@ export async function DELETE(request: NextRequest) {
       throw new Error("Invalid following user Id");
     }
 
-    let updatedFollowingIds = [...currentUser.following];
-    updatedFollowingIds = updatedFollowingIds.filter(
-      (user) => user.id !== currentUser.id
-    );
-
-    const updatedUser = await prisma.user.update({
+    const updatedUser = await prisma.userFollows.delete({
       where: {
-        id: currentUser.id,
-      },
-      data: {
-        following: updatedFollowingIds,
+        A: currentUser.id,
+        B: user.id,
       },
     });
 
