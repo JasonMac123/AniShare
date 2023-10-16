@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 
 import { SafeUser } from "@/app/types";
 
+import Button from "../input/Button";
+
 interface UserFollowButtonProps {
   currentUser: SafeUser;
   userId: string;
@@ -29,7 +31,11 @@ const UserFollowButton: React.FC<UserFollowButtonProps> = ({
       });
   }, [userId, currentUser.following]);
 
-  return <div></div>;
+  if (currentUser.following.some((item) => item.id === userId)) {
+    return <Button label="Unfollow" onClick={onFollow} />;
+  }
+
+  return <Button label="Follow" onClick={onFollow} />;
 };
 
 export default UserFollowButton;
