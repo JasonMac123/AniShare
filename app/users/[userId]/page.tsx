@@ -7,7 +7,7 @@ import UserBio from "@/app/components/user/UserBio";
 import PostFeed from "@/app/components/posts/PostFeed";
 
 interface UserViewPageProps {
-  userId?: string;
+  userId: string;
 }
 
 const UserView = async ({ params }: { params: UserViewPageProps }) => {
