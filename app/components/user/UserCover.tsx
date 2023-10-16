@@ -3,11 +3,11 @@
 import Image from "next/image";
 import Avatar from "./Avatar";
 
-import { safeUser } from "../../types";
+import { SafeUser } from "../../types";
 
 interface UserCoverProps {
   userId: string;
-  user: safeUser;
+  user: SafeUser;
 }
 
 const UserCover: React.FC<UserCoverProps> = ({ user }) => {

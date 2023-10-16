@@ -9,11 +9,11 @@ import { BiLogIn, BiLogOut, BiSolidMessage } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 
 import { signOut } from "next-auth/react";
-import { safeUser } from "@/app/types";
+import { SafeUser } from "@/app/types";
 import useLogin from "../../hooks/useLoginModal";
 
 interface UserMenuProps {
-  currentUser?: safeUser | null;
+  currentUser?: SafeUser | null;
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {

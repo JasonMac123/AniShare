@@ -1,6 +1,6 @@
 "use client";
 
-import { safeUser } from "@/app/types";
+import { SafeUser } from "@/app/types";
 
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
@@ -13,7 +13,7 @@ interface UserMenuItemProps {
   href?: string;
   icon: IconType;
   onClick?: () => void;
-  currentUser?: safeUser | null;
+  currentUser?: SafeUser | null;
 }
 
 const UserMenuItem: React.FC<UserMenuItemProps> = ({

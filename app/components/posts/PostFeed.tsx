@@ -1,11 +1,11 @@
 "use client";
 
-import { SafePost, safeUser } from "@/app/types";
+import { SafePost, SafeUser } from "@/app/types";
 import PostItem from "./PostItem";
 
 interface PostFeedProps {
   posts: SafePost[];
-  user: safeUser | null;
+  user: SafeUser | null;
 }
 
 const PostFeed: React.FC<PostFeedProps> = ({ posts, user }) => {

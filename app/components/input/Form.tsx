@@ -12,14 +12,14 @@ import useRegister from "../hooks/useRegisterModal";
 
 import InputForm from "./InputForm";
 import Button from "./Button";
-import { safeUser } from "@/app/types";
+import { SafeUser } from "@/app/types";
 import ImageUpload from "./ImageUpload";
 import Avatar from "../user/Avatar";
 
 interface FormProps {
   isComment?: boolean;
   postId?: string;
-  user: safeUser | null;
+  user: SafeUser | null;
 }
 
 const Form: React.FC<FormProps> = ({ isComment, postId, user }) => {

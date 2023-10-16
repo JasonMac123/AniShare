@@ -12,10 +12,10 @@ import InputForm from "../input/InputForm";
 import Modal from "./Modal";
 import ImageUpload from "../input/ImageUpload";
 
-import { safeUser } from "@/app/types";
+import { SafeUser } from "@/app/types";
 
 interface EditModalProps {
-  user: safeUser;
+  user: SafeUser;
 }
 
 const Editmodal: React.FC<EditModalProps> = ({ user }) => {
