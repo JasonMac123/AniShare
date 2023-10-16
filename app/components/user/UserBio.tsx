@@ -1,15 +1,16 @@
 "use client";
 
-import axios from "axios";
-
-import { useCallback, useMemo } from "react";
-import { toast } from "react-toastify";
+import { useMemo } from "react";
 import { BiCalendar } from "react-icons/bi";
 import { format } from "date-fns";
 
-import Button from "../input/Button";
-import useEdit from "../hooks/useEditModal";
 import { SafeUser } from "@/app/types";
+
+import Button from "../input/Button";
+import UserFollowButton from "./UserFollowButton";
+
+import useEdit from "../hooks/useEditModal";
+import useLogin from "../hooks/useLoginModal";
 
 interface UserBioProps {
   currentUser?: SafeUser | null;
@@ -35,27 +36,21 @@ const UserBio: React.FC<UserBioProps> = ({
   }, [createdAt]);
 
   const editModal = useEdit();
-
-  const onFollow = useCallback(() => {
-    axios
-      .post("/api/follow", { userId })
-      .then(() => {
-        toast(`Followed ${username}`);
-      })
-      .catch((error) => {
-        toast(error);
-      });
-  }, [userId, currentUser]);
-
-  console.log(currentUser);
+  const LoginModal = useLogin();
 
   return (
     <div className="border-b-[1px] border-neutral-800 pb-4">
       <div className="flex justify-end p-2">
         {currentUser?.id === userId ? (
           <Button secondary label="Edit" onClick={editModal.onOpen} />
+        ) : !currentUser ? (
+          <Button secondary label="Follow" onClick={LoginModal.onOpen} />
         ) : (
-          <Button onClick={onFollow} label="Follow" secondary />
+          <UserFollowButton
+            currentUser={currentUser}
+            userId={userId}
+            username={username}
+          />
         )}
       </div>
       <div className="mt-8 px-4">
