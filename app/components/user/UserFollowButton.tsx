@@ -13,12 +13,16 @@ interface UserFollowButtonProps {
   currentUser: SafeUser;
   userId: string;
   username: string;
+  onChange: (number: number) => void;
+  value: number;
 }
 
 const UserFollowButton: React.FC<UserFollowButtonProps> = ({
   currentUser,
   userId,
   username,
+  onChange,
+  value,
 }) => {
   const onFollow = useCallback(() => {
     if (currentUser.following.some((item) => item.id === userId)) {
@@ -26,6 +30,7 @@ const UserFollowButton: React.FC<UserFollowButtonProps> = ({
         .delete("/api/follow", { data: { userId } })
         .then(() => {
           toast(`Unfollowed ${username}`);
+          onChange(value - 1);
         })
         .catch((error) => {
           toast(error);
@@ -37,6 +42,7 @@ const UserFollowButton: React.FC<UserFollowButtonProps> = ({
       .post("/api/follow", { userId })
       .then(() => {
         toast(`Followed ${username}`);
+        onChange(value + 1);
       })
       .catch((error) => {
         toast(error);

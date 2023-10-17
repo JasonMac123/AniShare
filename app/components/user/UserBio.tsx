@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { BiCalendar } from "react-icons/bi";
 import { format } from "date-fns";
 
@@ -38,6 +38,8 @@ const UserBio: React.FC<UserBioProps> = ({
   const editModal = useEdit();
   const LoginModal = useLogin();
 
+  const [followerCount, setFollowerCount] = useState(followers);
+
   return (
     <div className="border-b-[1px] border-neutral-800 pb-4">
       <div className="flex justify-end p-2">
@@ -50,6 +52,8 @@ const UserBio: React.FC<UserBioProps> = ({
             currentUser={currentUser}
             userId={userId}
             username={username}
+            onChange={setFollowerCount}
+            value={followerCount}
           />
         )}
       </div>
@@ -68,7 +72,7 @@ const UserBio: React.FC<UserBioProps> = ({
             <p className="text-white">Following</p>
             <p className="text-white">{following}</p>
             <p className="text-white">Followers</p>
-            <p className="text-white">{followers}</p>
+            <p className="text-white">{followerCount}</p>
           </div>
         </div>
       </div>
