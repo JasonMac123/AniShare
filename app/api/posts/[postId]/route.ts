@@ -19,7 +19,11 @@ export async function GET(
       },
       include: {
         author: true,
-        comment: true,
+        comment: {
+          include: {
+            user: true,
+          },
+        },
       },
     });
 
