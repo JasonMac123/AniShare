@@ -33,7 +33,7 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data, user }) => {
   const redirectPostPage = useCallback(
     (event: any) => {
       event.stopPropagation();
-      router.push(`/posts/${data.id}`);
+      router.push(`/post/${data.id}`);
     },
     [router, data.id]
   );
