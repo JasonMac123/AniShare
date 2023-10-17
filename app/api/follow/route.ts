@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     }
 
     const updatedUserFollowing = await prisma.userFollows.create({
-      data: { A: currentUser.id, B: userId },
+      data: { B: currentUser.id, A: userId },
     });
 
     return NextResponse.json(true);
@@ -52,7 +52,7 @@ export async function DELETE(request: NextRequest) {
     }
 
     const updatedUser = await prisma.userFollows.delete({
-      where: { A_B: { A: currentUser.id, B: userId } },
+      where: { A_B: { B: currentUser.id, A: userId } },
     });
 
     return NextResponse.json(updatedUser);
