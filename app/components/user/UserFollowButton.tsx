@@ -46,7 +46,6 @@ const UserFollowButton: React.FC<UserFollowButtonProps> = ({
   if (currentUser.following.some((item) => item.id === userId)) {
     return <Button label="Unfollow" onClick={onFollow} />;
   }
-  console.log(currentUser.following);
 
   return <Button label="Follow" onClick={onFollow} />;
 };
