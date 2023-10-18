@@ -83,5 +83,4 @@ model UserLikedPosts {
   @@unique([A, B], map: "_UserLikedPosts_AB_unique")
   @@index([B], map: "_UserLikedPosts_B_index")
   @@map("_UserLikedPosts")
-
 }
