@@ -24,6 +24,7 @@ model User {
   followedBy      User[]         @relation("UserFollows")
   following       User[]         @relation("UserFollows")
   posts           Post[]
+  likedPosts      Post[]         @relation("UserLikedPosts")
   comments        Comment[]
   notifications   Notification[]
 }
@@ -36,6 +37,7 @@ model Post {
   updatedAt DateTime  @updatedAt
   authorId  String
   author    User      @relation(fields: [authorId], references: [id])
+  likedIds  User[]    @relation("UserLikedPosts")
   comment   Comment[]
 
   @@index([authorId])
