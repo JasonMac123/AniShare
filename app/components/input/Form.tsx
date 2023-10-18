@@ -26,8 +26,6 @@ const Form: React.FC<FormProps> = ({ isComment, postId, user }) => {
   const loginModal = useLogin();
   const registerModal = useRegister();
 
-  const router = useRouter();
-
   const [loading, setLoading] = useState(false);
 
   const {
