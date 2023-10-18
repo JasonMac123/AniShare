@@ -75,3 +75,13 @@ model UserFollows {
   @@index([B], map: "_UserFollows_B_index")
   @@map("_UserFollows")
 }
+
+model UserLikedPosts {
+  A String
+  B String
+
+  @@unique([A, B], map: "_UserLikedPosts_AB_unique")
+  @@index([B], map: "_UserLikedPosts_B_index")
+  @@map("_UserLikedPosts")
+
+}
