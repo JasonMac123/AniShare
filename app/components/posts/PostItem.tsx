@@ -13,12 +13,11 @@ import Avatar from "../user/Avatar";
 import Image from "next/image";
 
 interface PostItemProps {
-  userId: string;
   data: SafePost;
   user: SafeUser | null;
 }
 
-const PostItem: React.FC<PostItemProps> = ({ userId, data, user }) => {
+const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
   const router = useRouter();
   const loginModal = useLogin();
 
