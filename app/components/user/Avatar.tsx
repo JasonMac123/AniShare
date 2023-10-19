@@ -43,6 +43,7 @@ const Avatar: React.FC<AvatarProps> = ({
           objectFit: "cover",
           borderRadius: "100%",
         }}
+        sizes="h-full w-full,"
         alt="Avatar"
         onClick={handleClick}
         src={userImage || "/images/placeholder.png"}
