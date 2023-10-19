@@ -34,3 +34,40 @@ export async function POST(request: NextRequest) {
     throw new Error(error);
   }
 }
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const { postId } = await request.json();
+    const user = await getCurrentUser();
+
+    if (!user) {
+      throw new Error("Not signed in");
+    }
+
+    const post = await prisma.post.findUnique({
+      where: {
+        id: postId,
+      },
+      include: {
+        likedIds: true,
+      },
+    });
+
+    if (!post) {
+      throw new Error("Invalid Id");
+    }
+
+    const deleteLiked = await prisma.userLikedPosts.delete({
+      where: {
+        A_B: {
+          B: user.id,
+          A: postId,
+        },
+      },
+    });
+
+    return NextResponse.json(true);
+  } catch (error: any) {
+    throw new Error(error);
+  }
+}
