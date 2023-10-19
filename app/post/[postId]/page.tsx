@@ -1,10 +1,10 @@
 import axios from "axios";
 
-import getCurrentUser from "../functions/getCurrentUser";
+import getCurrentUser from "@/app/functions/getCurrentUser";
 
-import Header from "../components/Header";
-import PostItem from "../components/posts/PostItem";
-import Form from "../components/input/Form";
+import Header from "@/app/components/Header";
+import PostItem from "@/app/components/posts/PostItem";
+import Form from "@/app/components/input/Form";
 
 interface PostPageProps {
   postId: string;
