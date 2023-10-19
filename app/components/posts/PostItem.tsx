@@ -89,7 +89,7 @@ const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
           onClick={onLike}
         >
           <AiOutlineHeart size={20} />
-          <p>{data.comment?.length || 0}</p>
+          <p>{data.likedIds?.length || 0}</p>
         </div>
       </div>
     </div>

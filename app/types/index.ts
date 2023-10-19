@@ -16,6 +16,7 @@ export type SafePost = Omit<Post, "createdAt" | "updatedAt"> & {
   updatedAt: string;
   author: SafeUser;
   comment: SafeComment[];
+  likedIds: User[];
 };
 
 export type SafeComment = Omit<Comment, "createdAt" | "updatedAt"> & {
