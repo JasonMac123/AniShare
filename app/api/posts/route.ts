@@ -34,6 +34,7 @@ export async function GET(request: NextRequest) {
       },
       include: {
         author: true,
+        likedIds: true,
       },
     });
     return NextResponse.json(posts);

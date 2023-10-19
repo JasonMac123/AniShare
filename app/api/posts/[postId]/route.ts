@@ -19,6 +19,7 @@ export async function GET(
       },
       include: {
         author: true,
+        likedIds: true,
         comment: {
           include: {
             user: true,
