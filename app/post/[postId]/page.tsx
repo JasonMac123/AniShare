@@ -4,7 +4,7 @@ import getCurrentUser from "@/app/functions/getCurrentUser";
 
 import Header from "@/app/components/Header";
 import PostItem from "@/app/components/posts/PostItem";
-import Form from "@/app/components/input/Form";
+import CommentForm from "@/app/components/input/CommentForm";
 
 interface PostPageProps {
   postId: string;
@@ -24,7 +24,7 @@ const Page = async ({ params }: { params: PostPageProps }) => {
     <>
       <Header label="Tweet" />
       <PostItem data={postData.data} user={currentUser} />
-      <CommentForm />
+      <CommentForm postId={params.postId} user={currentUser} />
     </>
   );
 };

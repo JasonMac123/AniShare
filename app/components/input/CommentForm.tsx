@@ -16,9 +16,10 @@ import Avatar from "../user/Avatar";
 
 interface CommentFormProps {
   user: SafeUser | null;
+  postId: string;
 }
 
-const CommentForm: React.FC<CommentFormProps> = ({ user }) => {
+const CommentForm: React.FC<CommentFormProps> = ({ user, postId }) => {
   const loginModal = useLogin();
 
   const [loading, setLoading] = useState(false);
@@ -46,7 +47,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ user }) => {
     setLoading(true);
 
     axios
-      .post("/api/comments", { ...data, postId: data.id, userId: user.id })
+      .post("/api/comments", { ...data, postId, userId: user.id })
       .then(() => {
         toast("Comment Created");
       })
