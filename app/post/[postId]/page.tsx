@@ -24,7 +24,7 @@ const Page = async ({ params }: { params: PostPageProps }) => {
     <>
       <Header label="Tweet" />
       <PostItem data={postData.data} user={currentUser} />
-      <Form isComment user={currentUser} postId={postData.data.id} />
+      <CommentForm />
     </>
   );
 };
