@@ -17,12 +17,10 @@ import ImageUpload from "./ImageUpload";
 import Avatar from "../user/Avatar";
 
 interface FormProps {
-  isComment?: boolean;
-  postId?: string;
   user: SafeUser | null;
 }
 
-const Form: React.FC<FormProps> = ({ isComment, postId, user }) => {
+const Form: React.FC<FormProps> = ({ user }) => {
   const loginModal = useLogin();
   const registerModal = useRegister();
 
