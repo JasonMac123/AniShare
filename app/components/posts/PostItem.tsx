@@ -3,7 +3,7 @@
 import { SafePost, SafeUser } from "@/app/types";
 import { toast } from "react-toastify";
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { formatDistanceToNowStrict } from "date-fns";
@@ -22,6 +22,8 @@ interface PostItemProps {
 const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
   const router = useRouter();
   const loginModal = useLogin();
+
+  const [likeCount, setLikeCount] = useState(data.likedIds.length);
 
   const redirectUserPage = useCallback(
     (event: any) => {
@@ -57,6 +59,7 @@ const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
           .delete("/api/like", { data: { postId: data.id } })
           .then(() => {
             toast(`Unliked ${data.body} post`);
+            setLikeCount(likeCount - 1);
           })
           .catch((error) => {
             toast(error);
@@ -68,6 +71,7 @@ const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
         .post("/api/like", { postId: data.id })
         .then(() => {
           toast(`Liked ${data.body} post`);
+          setLikeCount(likeCount + 1);
         })
         .catch((error) => {
           toast(error);
@@ -118,7 +122,7 @@ const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
           onClick={onLike}
         >
           <AiOutlineHeart size={20} />
-          <p>{data.likedIds?.length || 0}</p>
+          <p>{likeCount}</p>
         </div>
       </div>
     </div>
