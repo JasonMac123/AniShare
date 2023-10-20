@@ -43,21 +43,28 @@ const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
     return formatDistanceToNowStrict(new Date(data.createdAt));
   }, [data.createdAt]);
 
-  const onLike = useCallback((event: any) => {
-    event.stopPropagation();
+  const onLike = useCallback(
+    (event: any) => {
+      event.stopPropagation();
 
-    if (!user) {
-      loginModal.onOpen;
-      return;
-    }
+      if (!user) {
+        loginModal.onOpen;
+        return;
+      }
 
-    if (!data.likedIds.some((item) => item.id === user.id)) {
-      axios.delete("/api/like", { data: { postId: data.id } }).then(() => {
-        toast(`Unliked ${data.body} post`);
+      if (!data.likedIds.some((item) => item.id === user.id)) {
+        axios.delete("/api/like", { data: { postId: data.id } }).then(() => {
+          toast(`Unliked ${data.body} post`);
+        });
+        return;
+      }
+
+      axios.post("/api/like", { postId: data.id }).then(() => {
+        toast(`Liked ${data.body} post`);
       });
-      return;
-    }
-  }, []);
+    },
+    [data, user]
+  );
 
   return (
     <div
