@@ -14,11 +14,11 @@ import Button from "./Button";
 import { SafeUser } from "@/app/types";
 import Avatar from "../user/Avatar";
 
-interface FormProps {
+interface CommentFormProps {
   user: SafeUser | null;
 }
 
-const Form: React.FC<FormProps> = ({ user }) => {
+const CommentForm: React.FC<CommentFormProps> = ({ user }) => {
   const loginModal = useLogin();
 
   const [loading, setLoading] = useState(false);
@@ -92,4 +92,4 @@ const Form: React.FC<FormProps> = ({ user }) => {
   );
 };
 
-export default Form;
+export default CommentForm;
