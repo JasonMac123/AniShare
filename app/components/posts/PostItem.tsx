@@ -52,7 +52,7 @@ const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
         return;
       }
 
-      if (!data.likedIds.some((item) => item.id === user.id)) {
+      if (data.likedIds.some((item) => item.id === user.id)) {
         axios
           .delete("/api/like", { data: { postId: data.id } })
           .then(() => {
