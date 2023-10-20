@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { ImWarning } from "react-icons/im";
+
 import getCurrentUser from "@/app/functions/getCurrentUser";
 
 import Header from "@/app/components/Header";
@@ -17,7 +19,14 @@ const Page = async ({ params }: { params: PostPageProps }) => {
   const currentUser = await getCurrentUser();
 
   if (!postData) {
-    return <div className="flex justify-center items-center h-full"></div>;
+    return (
+      <div className="flex justify-center items-center h-full">
+        <div className="flex flex-col items-center justify-center">
+          <ImWarning size={40} color="red" />
+          <p>Sorry, could not fetch post</p>
+        </div>
+      </div>
+    );
   }
 
   return (
