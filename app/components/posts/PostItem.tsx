@@ -1,6 +1,7 @@
 "use client";
 
 import { SafePost, SafeUser } from "@/app/types";
+import { toast } from "react-toastify";
 
 import { useCallback, useMemo } from "react";
 import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
@@ -11,6 +12,7 @@ import useLogin from "../hooks/useLoginModal";
 
 import Avatar from "../user/Avatar";
 import Image from "next/image";
+import axios from "axios";
 
 interface PostItemProps {
   data: SafePost;
@@ -41,9 +43,19 @@ const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
     return formatDistanceToNowStrict(new Date(data.createdAt));
   }, [data.createdAt]);
 
-  const onLike = useCallback(() => {
+  const onLike = useCallback((event: any) => {
+    event.stopPropagation();
+
     if (!user) {
       loginModal.onOpen;
+      return;
+    }
+
+    if (!data.likedIds.some((item) => item.id === user.id)) {
+      axios.delete("/api/like", { data: { postId: data.id } }).then(() => {
+        toast(`Unliked ${data.body} post`);
+      });
+      return;
     }
   }, []);
 
