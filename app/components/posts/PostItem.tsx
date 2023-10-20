@@ -53,15 +53,25 @@ const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
       }
 
       if (!data.likedIds.some((item) => item.id === user.id)) {
-        axios.delete("/api/like", { data: { postId: data.id } }).then(() => {
-          toast(`Unliked ${data.body} post`);
-        });
+        axios
+          .delete("/api/like", { data: { postId: data.id } })
+          .then(() => {
+            toast(`Unliked ${data.body} post`);
+          })
+          .catch((error) => {
+            toast(error);
+          });
         return;
       }
 
-      axios.post("/api/like", { postId: data.id }).then(() => {
-        toast(`Liked ${data.body} post`);
-      });
+      axios
+        .post("/api/like", { postId: data.id })
+        .then(() => {
+          toast(`Liked ${data.body} post`);
+        })
+        .catch((error) => {
+          toast(error);
+        });
     },
     [data, user]
   );
