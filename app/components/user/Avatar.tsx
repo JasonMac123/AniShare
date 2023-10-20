@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 interface AvatarProps {
-  userId: string;
-  userImage: string | null;
+  userId?: string;
+  userImage?: string | null;
   isLarge?: boolean;
   hasBorder?: boolean;
 }
@@ -24,6 +24,10 @@ const Avatar: React.FC<AvatarProps> = ({
     (event: any) => {
       event.stopPropagation();
 
+      if (!userId) {
+        return;
+      }
+
       const url = `/users/${userId}`;
 
       router.push(url);
@@ -33,9 +37,10 @@ const Avatar: React.FC<AvatarProps> = ({
 
   return (
     <div
-      className={` rounded-full hover:opacity-90 transition cursor-pointer relative
+      className={` rounded-full hover:opacity-90 transition relative
       ${hasBorder ? "border-4 border-black" : ""} 
-      ${isLarge ? "h-32 w-32" : "h-12 w-12"} `}
+      ${isLarge ? "h-32 w-32" : "h-12 w-12"} 
+      ${userId} ? "cursor-pointer" : ""`}
     >
       <Image
         fill
