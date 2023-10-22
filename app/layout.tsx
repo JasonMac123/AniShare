@@ -25,7 +25,9 @@ export default async function RootLayout({
 }) {
   const currentUser = await getCurrentUser();
 
-  const users = await axios.get("http://localhost:3000/api/users");
+  const users = await axios.get(
+    `http://localhost:3000/api/users?currentUser=${currentUser?.id}`
+  );
 
   return (
     <html lang="en">
