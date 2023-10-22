@@ -22,4 +22,5 @@ export type SafePost = Omit<Post, "createdAt" | "updatedAt"> & {
 export type SafeComment = Omit<Comment, "createdAt" | "updatedAt"> & {
   createdAt: string;
   updatedAt: string;
+  user: User;
 };
