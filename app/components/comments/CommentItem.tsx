@@ -3,8 +3,11 @@
 import { useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
 
-import { SafeComment } from "@/app/types";
 import { formatDistanceToNowStrict } from "date-fns";
+
+import Avatar from "../user/Avatar";
+
+import { SafeComment } from "@/app/types";
 
 interface CommentItemProp {
   data: SafeComment;
@@ -31,7 +34,25 @@ const CommentItem: React.FC<CommentItemProp> = ({ data }) => {
     return formatDistanceToNowStrict(new Date(data.createdAt));
   }, [data.createdAt]);
 
-  return <div></div>;
+  return (
+    <div className="border-b-[1px] border-neutral-800 p-5 cursor-pointer hover:bg-neutral-900 transition">
+      <div className="flex flex-row items-start gap-3">
+        <Avatar userId={data.user.id} userImage={data.user.profileImage} />
+        <div>
+          <div className="flex flex-row items-center gap-2">
+            <p
+              className="text-white font-semibold cursor-pointer"
+              onClick={redirectUserPage}
+            >
+              @{data.user.username}
+            </p>
+            <span className="text-neutral-500 text-sm">{newDate}</span>
+          </div>
+          <div className="text-white mt-1">{data.body}</div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default CommentItem;
