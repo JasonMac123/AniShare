@@ -7,7 +7,13 @@ interface CommentFeedProps {
 }
 
 const CommentFeed: React.FC<CommentFeedProps> = ({ comments }) => {
-  return <div></div>;
+  return (
+    <>
+      {comments.map((comment) => {
+        return <CommentItem key={comment.id} data={comment} />;
+      })}
+    </>
+  );
 };
 
 export default CommentFeed;
