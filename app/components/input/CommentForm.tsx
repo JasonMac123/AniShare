@@ -60,8 +60,8 @@ const CommentForm: React.FC<CommentFormProps> = ({ user, postId }) => {
   };
 
   return (
-    <>
-      <div className="flex flex-row gap-4">
+    <div className="border-b-[1px] border-black">
+      <div className="flex flex-row gap-4 p-8 pb-2">
         <div>
           {user ? (
             <Avatar userId={user.id} userImage={user.profileImage} />
@@ -81,7 +81,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ user, postId }) => {
           />
         </div>
       </div>
-      <div className="mt-4 flex flex-row justify-end">
+      <div className="mt-4 flex flex-row justify-end mr-6 pb-4">
         <Button
           label="Comment"
           disabled={loading || !body}
@@ -89,7 +89,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ user, postId }) => {
           large
         />
       </div>
-    </>
+    </div>
   );
 };
 
