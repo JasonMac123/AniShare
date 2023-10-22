@@ -40,7 +40,7 @@ const Avatar: React.FC<AvatarProps> = ({
       className={` rounded-full hover:opacity-90 transition relative
       ${hasBorder ? "border-4 border-black" : ""} 
       ${isLarge ? "h-32 w-32" : "h-12 w-12"} 
-      ${userId} ? "cursor-pointer" : ""`}
+      ${userId ? "cursor-pointer" : ""}`}
     >
       <Image
         fill
