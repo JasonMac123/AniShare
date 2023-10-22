@@ -1,6 +1,6 @@
 "use client";
 
-import { SafeComment } from "../types";
+import { SafeComment } from "@/app/types";
 
 interface CommentFeedProps {
   comments: SafeComment[];

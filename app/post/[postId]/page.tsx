@@ -7,7 +7,7 @@ import getCurrentUser from "@/app/functions/getCurrentUser";
 import Header from "@/app/components/Header";
 import PostItem from "@/app/components/posts/PostItem";
 import CommentForm from "@/app/components/input/CommentForm";
-import CommentFeed from "@/app/components/CommentFeed";
+import CommentFeed from "@/app/components/comments/CommentFeed";
 
 interface PostPageProps {
   postId: string;
