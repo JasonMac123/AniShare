@@ -2,6 +2,8 @@
 
 import { SafeComment } from "@/app/types";
 
+import CommentItem from "./CommentItem";
+
 interface CommentFeedProps {
   comments: SafeComment[];
 }
