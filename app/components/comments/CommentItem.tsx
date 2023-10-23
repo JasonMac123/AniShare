@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { formatDistanceToNowStrict } from "date-fns";
@@ -16,6 +16,8 @@ interface CommentItemProp {
 const CommentItem: React.FC<CommentItemProp> = ({ data }) => {
   const router = useRouter();
 
+  const [distanceToFromNow, setDistanceToFromNow] = useState(data.createdAt);
+
   const redirectUserPage = useCallback(
     (event: any) => {
       event.stopPropagation();
@@ -27,12 +29,12 @@ const CommentItem: React.FC<CommentItemProp> = ({ data }) => {
   );
 
   const newDate = useMemo(() => {
-    if (!data.createdAt) {
-      return null;
-    }
-
     return formatDistanceToNowStrict(new Date(data.createdAt));
   }, [data.createdAt]);
+
+  useEffect(() => {
+    setDistanceToFromNow(newDate);
+  });
 
   return (
     <div className="border-b-[1px] border-neutral-800 p-5 cursor-pointer hover:bg-neutral-900 transition">
@@ -46,7 +48,9 @@ const CommentItem: React.FC<CommentItemProp> = ({ data }) => {
             >
               @{data.user.username}
             </p>
-            <span className="text-neutral-500 text-sm">{newDate}</span>
+            <span className="text-neutral-500 text-sm">
+              {distanceToFromNow}
+            </span>
           </div>
           <div className="text-white mt-1">{data.body}</div>
         </div>
