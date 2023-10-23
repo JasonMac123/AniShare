@@ -20,6 +20,7 @@ interface CommentFormProps {
 }
 
 const CommentForm: React.FC<CommentFormProps> = ({ user, postId }) => {
+  const router = useRouter();
   const loginModal = useLogin();
 
   const [loading, setLoading] = useState(false);
@@ -50,6 +51,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ user, postId }) => {
       .post("/api/comments", { ...data, postId, userId: user.id })
       .then(() => {
         toast("Comment Created");
+        router.refresh();
       })
       .catch((error) => {
         toast(error);
