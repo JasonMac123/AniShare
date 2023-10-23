@@ -1,9 +1,12 @@
 import { NextPageContext } from "next";
+import axios from "axios";
+
 import Header from "../components/Header";
+
 import getCurrentUser from "../functions/getCurrentUser";
 
 export async function getServerSideProps(context: NextPageContext) {
-  const currentUser = getCurrentUser();
+  const currentUser = await getCurrentUser();
 
   if (!currentUser) {
     return {
@@ -21,7 +24,13 @@ export async function getServerSideProps(context: NextPageContext) {
   };
 }
 
-const Notifications = () => {
+const Notifications = async () => {
+  const currentUser = await getCurrentUser();
+
+  const notificationData = axios.get(
+    `http://localhost:3000/api/notifications/${currentUser!.id}`
+  );
+
   return (
     <>
       <Header label="Notifications" />
