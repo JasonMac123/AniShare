@@ -48,7 +48,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ user, postId }) => {
     setLoading(true);
 
     axios
-      .post("/api/comments", { ...data, postId, userId: user.id })
+      .post("/api/comment", { ...data, postId, userId: user.id })
       .then(() => {
         toast("Comment Created");
         router.refresh();
