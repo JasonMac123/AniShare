@@ -34,7 +34,11 @@ const Page = async ({ params }: { params: PostPageProps }) => {
     <>
       <Header label="Tweet" />
       <PostItem data={postData.data} user={currentUser} />
-      <CommentForm postId={params.postId} user={currentUser} />
+      <CommentForm
+        postId={params.postId}
+        user={currentUser}
+        authorId={postData.data.id}
+      />
       <CommentFeed comments={postData.data.comment} />
     </>
   );

@@ -6,7 +6,7 @@ import getCurrentUser from "../../functions/getCurrentUser";
 export async function POST(request: NextRequest) {
   try {
     const user = await getCurrentUser();
-    const { body, postId } = await request.json();
+    const { body, postId, authorId } = await request.json();
 
     if (!user) {
       throw new Error("Not signed in");
@@ -17,6 +17,22 @@ export async function POST(request: NextRequest) {
         body: body,
         userId: user.id,
         postId: postId,
+      },
+    });
+
+    await prisma.notification.create({
+      data: {
+        body: "Somone has commented on your post",
+        userId: authorId,
+      },
+    });
+
+    await prisma.user.update({
+      where: {
+        id: authorId,
+      },
+      data: {
+        hasNotification: true,
       },
     });
 
