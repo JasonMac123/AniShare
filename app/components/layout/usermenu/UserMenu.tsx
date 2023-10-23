@@ -27,6 +27,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
       label: "Notifications",
       href: "/notifications",
       icon: BsBellFill,
+      alert: currentUser?.hasNotification,
     },
     {
       label: "Messages",
@@ -48,12 +49,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         <div className="space-y-2 lg:w-[230px] mt-4">
           <UserMenuLogo />
           {userMenuItems.map((item) => (
-            <UserMenuItem
-              key={item.href}
-              href={item.href}
-              label={item.label}
-              icon={item.icon}
-            />
+            <UserMenuItem key={item.href} {...item} />
           ))}
           <UserMenuCreate />
           {currentUser ? (

@@ -15,7 +15,7 @@ interface UserMenuItemProps {
   icon: IconType;
   onClick?: () => void;
   currentUser?: SafeUser | null;
-  alert?: boolean;
+  alert?: boolean | null;
 }
 
 const UserMenuItem: React.FC<UserMenuItemProps> = ({
