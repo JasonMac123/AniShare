@@ -5,7 +5,9 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: NextApiRequest) {
   try {
-    const userId = req.query;
+    const url = req.url;
+
+    const userId = new URL(url!).searchParams.get("currentUser");
 
     if (!userId) {
       throw new Error("Invalid Id");
