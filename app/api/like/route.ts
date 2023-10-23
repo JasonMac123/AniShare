@@ -36,6 +36,15 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    await prisma.user.update({
+      where: {
+        id: post.authorId,
+      },
+      data: {
+        hasNotification: true,
+      },
+    });
+
     return NextResponse.json(createLiked);
   } catch (error: any) {
     throw new Error(error);
