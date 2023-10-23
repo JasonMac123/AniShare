@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     await prisma.notification.create({
       data: {
         body: "Someone liked your tweet!",
-        userId: user.id,
+        userId: post.authorId,
       },
     });
 
