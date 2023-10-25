@@ -41,12 +41,14 @@ const RegisterModal = () => {
       .post("/api/register", data)
       .then((data) => {
         if (data.data === "Duplicate Email") {
-          toast("Duplicate email. Use another Email");
+          toast(
+            "Email is already being used by another account. Use another Email"
+          );
           return;
         }
 
         if (data.data === "Duplicate UserName") {
-          toast("Duplicate Username. Use another Username");
+          toast("Username is already taken. Use another Username");
           return;
         }
 
@@ -54,7 +56,6 @@ const RegisterModal = () => {
       })
       .catch((error) => {
         console.log(error);
-        toast(error);
       })
       .finally(() => {
         setLoading(false);
