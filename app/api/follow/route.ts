@@ -30,6 +30,8 @@ export async function POST(request: NextRequest) {
       data: {
         body: "Someone followed you!",
         userId: userId,
+        type: "User",
+        reference: currentUser.id,
       },
     });
 

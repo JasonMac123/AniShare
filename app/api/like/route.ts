@@ -33,6 +33,8 @@ export async function POST(request: NextRequest) {
       data: {
         body: "Someone liked your tweet!",
         userId: post.authorId,
+        type: "Post",
+        reference: postId,
       },
     });
 

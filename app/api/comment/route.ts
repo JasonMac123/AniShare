@@ -24,6 +24,8 @@ export async function POST(request: NextRequest) {
       data: {
         body: "Somone has commented on your post",
         userId: authorId,
+        type: "Post",
+        reference: postId,
       },
     });
 
