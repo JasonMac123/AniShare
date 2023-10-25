@@ -49,7 +49,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         <div className="space-y-2 lg:w-[230px] mt-4">
           <UserMenuLogo />
           {userMenuItems.map((item) => (
-            <UserMenuItem key={item.href} {...item} />
+            <UserMenuItem key={item.href} {...item} currentUser={currentUser} />
           ))}
           <UserMenuCreate />
           {currentUser ? (
