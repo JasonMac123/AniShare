@@ -27,6 +27,7 @@ export async function GET(req: NextApiRequest) {
       orderBy: {
         createdAt: "desc",
       },
+      take: 5,
     });
 
     const user = await prisma.user.findUnique({

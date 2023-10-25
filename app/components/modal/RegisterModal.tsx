@@ -56,6 +56,7 @@ const RegisterModal = () => {
           toast("Username is already taken. Use another Username");
           return;
         }
+
         signIn("credentials", {
           email: data.data.email,
           password: data.data.password,
