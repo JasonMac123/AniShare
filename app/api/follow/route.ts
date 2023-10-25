@@ -26,6 +26,22 @@ export async function POST(request: NextRequest) {
       data: { B: currentUser.id, A: userId },
     });
 
+    await prisma.notification.create({
+      data: {
+        body: "Someone followed you!",
+        userId: userId,
+      },
+    });
+
+    await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        hasNotification: true,
+      },
+    });
+
     return NextResponse.json(true);
   } catch (error: any) {
     throw new Error(error);
