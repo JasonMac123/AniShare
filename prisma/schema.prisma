@@ -60,6 +60,8 @@ model Comment {
 model Notification {
   id        String   @id @unique @default(uuid())
   body      String
+  type      String
+  reference String
   createdAt DateTime @default(now())
   userId    String
   user      User     @relation(fields: [userId], references: [id])
