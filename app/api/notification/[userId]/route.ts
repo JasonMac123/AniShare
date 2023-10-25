@@ -3,15 +3,16 @@ import { NextApiRequest } from "next";
 import prisma from "@/app/prisma/prismadb";
 import { NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest) {
+interface getUserNotificationParams {
+  userId?: string;
+}
+
+export async function GET(
+  req: NextApiRequest,
+  { params }: { params: getUserNotificationParams }
+) {
   try {
-    const url = req.url;
-
-    const userId = new URL(url!).searchParams.get("currentUser");
-
-    if (!userId) {
-      throw new Error("Invalid Id");
-    }
+    const { userId } = params;
 
     const notifications = await prisma.notification.findMany({
       where: {

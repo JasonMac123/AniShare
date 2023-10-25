@@ -1,34 +1,14 @@
-import { NextPageContext } from "next";
 import axios from "axios";
 
 import Header from "../components/Header";
-
-import getCurrentUser from "../functions/getCurrentUser";
-import { SafeUser } from "../types";
 import NotificationFeed from "../components/notifications/NotificationFeed";
 
-export async function getServerSideProps(context: NextPageContext) {
+import getCurrentUser from "../functions/getCurrentUser";
+
+const Notifications = async () => {
   const currentUser = await getCurrentUser();
-
-  if (!currentUser) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {
-      currentUser,
-    },
-  };
-}
-
-const Notifications = async ({ currentUser }: { currentUser: SafeUser }) => {
   const notificationData = await axios.get(
-    `http://localhost:3000/api/notifications/${currentUser.id}`
+    `http://localhost:3000/api/notification/${currentUser.id}`
   );
 
   return (
