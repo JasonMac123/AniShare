@@ -14,9 +14,7 @@ const NotificationFeed: React.FC<NotificationFeedProps> = ({
 }) => {
   if (notifications.length === 0) {
     return (
-      <div className="text-neutral-600 text-center p-6 text-xl">
-        No notifications
-      </div>
+      <div className="text-white text-center p-6 text-xl">No notifications</div>
     );
   }
 
