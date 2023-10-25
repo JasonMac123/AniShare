@@ -39,11 +39,22 @@ const RegisterModal = () => {
 
     axios
       .post("/api/register", data)
-      .then(() => {
+      .then((data) => {
+        if (data.data === "Duplicate Email") {
+          toast("Duplicate email. Use another Email");
+          return;
+        }
+
+        if (data.data === "Duplicate UserName") {
+          toast("Duplicate Username. Use another Username");
+          return;
+        }
+
         registerModal.onClose();
       })
       .catch((error) => {
-        toast("Something went wrong");
+        console.log(error);
+        toast(error);
       })
       .finally(() => {
         setLoading(false);

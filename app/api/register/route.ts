@@ -9,6 +9,26 @@ export async function POST(req: Request) {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
+    const duplicateUserEmail = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    if (duplicateUserEmail) {
+      return NextResponse.json("Duplicate Email");
+    }
+
+    const duplicateUserUserName = await prisma.user.findUnique({
+      where: {
+        username,
+      },
+    });
+
+    if (duplicateUserUserName) {
+      return NextResponse.json("Duplicate UserName");
+    }
+
     const user = await prisma.user.create({
       data: {
         email,
@@ -19,6 +39,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json(user);
   } catch (e: any) {
-    throw new Error("Something went wrong!");
+    throw new Error(e);
   }
 }
