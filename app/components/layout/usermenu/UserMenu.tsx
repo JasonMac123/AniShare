@@ -30,11 +30,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
       alert: currentUser?.hasNotification,
     },
     {
-      label: "Messages",
-      href: "/user/messages/123",
-      icon: BiSolidMessage,
-    },
-    {
       label: "Profile",
       href: `/users/${currentUser?.id}`,
       icon: FaUser,
