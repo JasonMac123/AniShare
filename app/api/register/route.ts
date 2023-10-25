@@ -37,7 +37,7 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json(user);
+    return NextResponse.json({ ...user, password });
   } catch (e: any) {
     throw new Error(e);
   }
