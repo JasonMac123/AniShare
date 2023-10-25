@@ -29,7 +29,22 @@ export async function GET(req: NextApiRequest) {
       },
     });
 
-    return NextResponse.json(withoutUser);
+    const user = await prisma.user.findUnique({
+      where: {
+        id: currentUser,
+      },
+      include: {
+        following: true,
+      },
+    });
+
+    const followedUserIds = user?.following.map((user) => user.id);
+
+    const filteredFollowingUsers = withoutUser.filter(
+      (user) => !followedUserIds?.includes(user.id)
+    );
+
+    return NextResponse.json(filteredFollowingUsers);
   } catch (e: any) {
     throw new Error(e);
   }
