@@ -22,7 +22,7 @@ const Notifications = async () => {
 
   return (
     <>
-      <Header label="Notifications" />
+      <Header label="Notifications" bottomBorder />
       <NotificationFeed notifications={notificationData.data} />
     </>
   );
