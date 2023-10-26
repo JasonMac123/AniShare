@@ -37,7 +37,7 @@ const Page = async ({ params }: { params: PostPageProps }) => {
       <CommentForm
         postId={params.postId}
         user={currentUser}
-        authorId={postData.data.id}
+        authorId={postData.data.authorId}
       />
       <CommentFeed comments={postData.data.comment} />
     </>
