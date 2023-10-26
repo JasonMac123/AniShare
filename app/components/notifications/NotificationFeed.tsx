@@ -5,12 +5,10 @@ import { BiLogoInstagram } from "react-icons/bi";
 
 interface NotificationFeedProps {
   notifications: Notification[];
-  currentUser: SafeUser;
 }
 
 const NotificationFeed: React.FC<NotificationFeedProps> = ({
   notifications,
-  currentUser,
 }) => {
   if (notifications.length === 0) {
     return (

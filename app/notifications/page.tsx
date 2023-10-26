@@ -23,10 +23,7 @@ const Notifications = async () => {
   return (
     <>
       <Header label="Notifications" />
-      <NotificationFeed
-        notifications={notificationData.data}
-        currentUser={currentUser}
-      />
+      <NotificationFeed notifications={notificationData.data} />
     </>
   );
 };
