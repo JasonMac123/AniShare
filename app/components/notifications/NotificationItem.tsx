@@ -23,7 +23,7 @@ const NotificationItem: React.FC<NotificationItemProps> = ({ data }) => {
 
   return (
     <div
-      className="flex flex-row items-center p-6 gap-4 border-b-[1px] border-neutral-800"
+      className="flex flex-row items-center p-6 gap-4 border-b-[1px] border-neutral-800 hover:neutral-900 cusrsor-pointer transition"
       onClick={onClick}
     >
       <BiLogoInstagram size={40} color="white" />
