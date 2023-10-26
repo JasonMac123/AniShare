@@ -1,7 +1,6 @@
-import { SafeUser } from "@/app/types";
 import { Notification } from "@prisma/client";
 
-import { BiLogoInstagram } from "react-icons/bi";
+import NotificationItem from "./NotificationItem";
 
 interface NotificationFeedProps {
   notifications: Notification[];
@@ -19,15 +18,7 @@ const NotificationFeed: React.FC<NotificationFeedProps> = ({
   return (
     <div className="flex flex-col">
       {notifications.map((notification) => {
-        return (
-          <div
-            key={notification.id}
-            className="flex flex-row items-center p-6 gap-4 border-b-[1px] border-neutral-800"
-          >
-            <BiLogoInstagram size={40} color="white" />
-            <p className="text-white">{notification.body}</p>
-          </div>
-        );
+        return <NotificationItem data={notification} key={notification.id} />;
       })}
     </div>
   );
