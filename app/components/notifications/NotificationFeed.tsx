@@ -1,9 +1,10 @@
 import { Notification } from "@prisma/client";
 
 import NotificationItem from "./NotificationItem";
+import { SafeNotification } from "@/app/types";
 
 interface NotificationFeedProps {
-  notifications: Notification[];
+  notifications: SafeNotification[];
 }
 
 const NotificationFeed: React.FC<NotificationFeedProps> = ({

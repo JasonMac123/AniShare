@@ -40,6 +40,7 @@ const NotificationItem: React.FC<NotificationItemProps> = ({ data }) => {
     >
       <BiLogoInstagram size={40} color="white" />
       <div>
+        <p className="text-white">{distanceToFromNow}</p>
         <p className="text-white">{data.body}</p>
       </div>
     </div>
