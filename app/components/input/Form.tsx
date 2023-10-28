@@ -15,6 +15,7 @@ import Button from "./Button";
 import { SafeUser } from "@/app/types";
 import ImageUpload from "./ImageUpload";
 import Avatar from "../user/Avatar";
+import TextAreaForm from "./TextAreaForm";
 
 interface FormProps {
   user: SafeUser | null;
@@ -84,14 +85,14 @@ const Form: React.FC<FormProps> = ({ user }) => {
               <Avatar userId={user.id} userImage={user.profileImage} />
             </div>
             <div className="w-full space-y-4">
-              <InputForm
+              <TextAreaForm
                 id="body"
                 label="Body"
-                type="text"
                 disabled={loading}
                 register={register}
                 errors={errors}
                 required
+                value={body}
               />
               <ImageUpload
                 label="Image"
