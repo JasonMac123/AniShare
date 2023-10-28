@@ -9,11 +9,11 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import useLogin from "../hooks/useLoginModal";
 
-import InputForm from "./InputForm";
 import Button from "./Button";
-import { SafeUser } from "@/app/types";
-import Avatar from "../user/Avatar";
 import TextAreaForm from "./TextAreaForm";
+import Avatar from "../user/Avatar";
+
+import { SafeUser } from "@/app/types";
 
 interface CommentFormProps {
   user: SafeUser | null;
