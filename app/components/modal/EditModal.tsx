@@ -31,6 +31,7 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
+      id: user.id,
       username: user.username,
       bio: user.bio,
       coverImage: user.coverImage,
@@ -53,10 +54,7 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
     setLoading(true);
 
     axios
-      .patch("/api/edit", {
-        ...data,
-        id: user?.id,
-      })
+      .patch("/api/edit", data)
       .then(() => {
         editModal.onClose();
         router.refresh();

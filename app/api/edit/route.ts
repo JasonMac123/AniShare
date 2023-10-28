@@ -2,11 +2,11 @@ import { NextApiRequest } from "next";
 import prisma from "../../prisma/prismadb";
 import { NextResponse } from "next/server";
 
-export async function PATCH(req: NextApiRequest) {
+export async function PATCH(req: Request) {
   try {
-    const { id, name, username, bio, profileImage, coverImage } = req.body;
+    const { id, username, bio, profileImage, coverImage } = await req.json();
 
-    if (!name || !username) {
+    if (!username) {
       throw new Error("Missing Fields");
     }
 
@@ -15,7 +15,6 @@ export async function PATCH(req: NextApiRequest) {
         id: id,
       },
       data: {
-        name,
         username,
         bio,
         profileImage,
