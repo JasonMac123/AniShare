@@ -3,7 +3,7 @@
 import { SafePost, SafeUser } from "@/app/types";
 import { toast } from "react-toastify";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { formatDistanceToNowStrict } from "date-fns";
@@ -24,6 +24,15 @@ const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
   const loginModal = useLogin();
 
   const [likeCount, setLikeCount] = useState(data.likedIds.length);
+  const [distanceToFromNow, setDistanceToFromNow] = useState(data.createdAt);
+
+  const newDate = useMemo(() => {
+    return formatDistanceToNowStrict(new Date(data.createdAt));
+  }, [data.createdAt]);
+
+  useEffect(() => {
+    setDistanceToFromNow(newDate);
+  });
 
   const redirectUserPage = useCallback(
     (event: any) => {
@@ -40,10 +49,6 @@ const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
     },
     [router, data.id]
   );
-
-  const dateSincePost = useMemo(() => {
-    return formatDistanceToNowStrict(new Date(data.createdAt));
-  }, [data.createdAt]);
 
   const onLike = useCallback(
     (event: any) => {
@@ -93,7 +98,9 @@ const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
         >
           @{data.author.username}
         </p>
-        <span className="text-neutral-100 text-sm">{dateSincePost} ago</span>
+        <span className="text-neutral-100 text-sm">
+          {distanceToFromNow} ago
+        </span>
       </div>
       {data.image ? (
         <div className="flex flex-col w-full">
