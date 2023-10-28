@@ -4,10 +4,10 @@ import { NextResponse } from "next/server";
 
 export async function PATCH(req: Request) {
   try {
-    const { id, username, bio, profileImage, coverImage } = await req.json();
+    const { id, bio, profileImage, coverImage } = await req.json();
 
-    if (!username) {
-      throw new Error("Missing Fields");
+    if (!id) {
+      throw new Error("Missing user credentials");
     }
 
     const updatedUser = await prisma.user.update({
@@ -15,7 +15,6 @@ export async function PATCH(req: Request) {
         id: id,
       },
       data: {
-        username,
         bio,
         profileImage,
         coverImage,

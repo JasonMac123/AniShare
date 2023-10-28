@@ -32,7 +32,6 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
   } = useForm<FieldValues>({
     defaultValues: {
       id: user.id,
-      username: user.username,
       bio: user.bio,
       coverImage: user.coverImage,
       profileImage: user.profileImage,
@@ -82,14 +81,6 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
         onChange={(value) => {
           setFormValue("profileImage", value);
         }}
-      />
-      <InputForm
-        id="username"
-        label="Username"
-        type="text"
-        disabled={loading}
-        register={register}
-        errors={errors}
       />
       <InputForm
         id="bio"
