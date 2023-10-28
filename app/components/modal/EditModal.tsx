@@ -8,7 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 import useEdit from "../hooks/useEditModal";
-import InputForm from "../input/InputForm";
+import TextAreaForm from "../input/TextAreaForm";
 import Modal from "./Modal";
 import ImageUpload from "../input/ImageUpload";
 
@@ -38,6 +38,7 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
     },
   });
 
+  const bio = watch("bio");
   const coverImage = watch("coverImage");
   const profileImage = watch("profileImage");
 
@@ -82,13 +83,14 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
           setFormValue("profileImage", value);
         }}
       />
-      <InputForm
+      <TextAreaForm
         id="bio"
-        label="Bio"
-        type="text"
+        label="Body"
         disabled={loading}
         register={register}
         errors={errors}
+        required
+        value={bio}
       />
     </div>
   );
