@@ -20,24 +20,25 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    await prisma.notification.create({
-      data: {
-        body: "Somone has commented on your post",
-        userId: authorId,
-        type: "Post",
-        reference: postId,
-      },
-    });
+    if (authorId !== user.id) {
+      await prisma.notification.create({
+        data: {
+          body: "Somone has commented on your post",
+          userId: authorId,
+          type: "Post",
+          reference: postId,
+        },
+      });
 
-    await prisma.user.update({
-      where: {
-        id: authorId,
-      },
-      data: {
-        hasNotification: true,
-      },
-    });
-
+      await prisma.user.update({
+        where: {
+          id: authorId,
+        },
+        data: {
+          hasNotification: true,
+        },
+      });
+    }
     return NextResponse.json(comment);
   } catch (error: any) {
     throw new Error(error);
