@@ -13,6 +13,7 @@ import InputForm from "./InputForm";
 import Button from "./Button";
 import { SafeUser } from "@/app/types";
 import Avatar from "../user/Avatar";
+import TextAreaForm from "./TextAreaForm";
 
 interface CommentFormProps {
   user: SafeUser | null;
@@ -82,14 +83,14 @@ const CommentForm: React.FC<CommentFormProps> = ({
           )}
         </div>
         <div className="w-full space-y-4">
-          <InputForm
+          <TextAreaForm
             id="body"
             label="Body"
-            type="text"
             disabled={loading}
             register={register}
             errors={errors}
             required
+            value={body}
           />
         </div>
       </div>
