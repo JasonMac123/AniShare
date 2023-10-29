@@ -44,7 +44,7 @@ export async function GET(req: NextApiRequest) {
       (user) => !followedUserIds?.includes(user.id)
     );
 
-    return NextResponse.json(filteredFollowingUsers.slice(0, 4));
+    return NextResponse.json(filteredFollowingUsers.slice(0, 5));
   } catch (e: any) {
     throw new Error(e);
   }
