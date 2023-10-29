@@ -6,6 +6,7 @@ import UserMenuCreate from "./UserMenuCreate";
 
 import { BsHouseFill, BsBellFill } from "react-icons/bs";
 import { BiLogIn, BiLogOut, BiSolidMessage } from "react-icons/bi";
+import { RiUserFollowFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 
 import { signOut } from "next-auth/react";
@@ -33,6 +34,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
       label: "Profile",
       href: `/users/${currentUser?.id}`,
       icon: FaUser,
+    },
+    {
+      label: "Following Users",
+      href: `/FollowedUsers`,
+      icon: RiUserFollowFill,
     },
   ];
 
