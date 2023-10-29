@@ -27,7 +27,6 @@ export async function GET(req: NextApiRequest) {
       orderBy: {
         createdAt: "desc",
       },
-      take: 5,
     });
 
     const user = await prisma.user.findUnique({
@@ -45,7 +44,7 @@ export async function GET(req: NextApiRequest) {
       (user) => !followedUserIds?.includes(user.id)
     );
 
-    return NextResponse.json(filteredFollowingUsers);
+    return NextResponse.json(filteredFollowingUsers.slice(0, 4));
   } catch (e: any) {
     throw new Error(e);
   }
