@@ -15,6 +15,14 @@ export default async function Home() {
     redirect("/");
   }
 
+  if (user.following.length === 0) {
+    return (
+      <div className="text-white text-center p-6 text-xl">
+        No followed users, try following some of the users in the Who to follow!
+      </div>
+    );
+  }
+
   const posts = await axios.get("http://localhost:3000/api/posts/followed");
 
   return (
