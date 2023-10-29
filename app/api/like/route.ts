@@ -29,23 +29,25 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    await prisma.notification.create({
-      data: {
-        body: "Someone liked your tweet!",
-        userId: post.authorId,
-        type: "Post",
-        reference: postId,
-      },
-    });
+    if (user.id !== post.authorId) {
+      await prisma.notification.create({
+        data: {
+          body: "Someone liked your tweet!",
+          userId: post.authorId,
+          type: "Post",
+          reference: postId,
+        },
+      });
 
-    await prisma.user.update({
-      where: {
-        id: post.authorId,
-      },
-      data: {
-        hasNotification: true,
-      },
-    });
+      await prisma.user.update({
+        where: {
+          id: post.authorId,
+        },
+        data: {
+          hasNotification: true,
+        },
+      });
+    }
 
     return NextResponse.json(createLiked);
   } catch (error: any) {
