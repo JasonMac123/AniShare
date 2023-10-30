@@ -1,38 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Marketplace - Look of Japan
 
-## Getting Started
+A website for people to share their anime tastes!
 
-First, run the development server:
+## Description
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+This website is a social media website where users can share their anime tastes, have discussions on anime topics, and follow people's blogs. Users can register either with their google accounts or email and start liking posts or following users. Users homepage on default will pull the latests posts from everyone where they can find people who they enjoy seeing and follow them. Users can include one image along with their post with a post body limit of 184 characters.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Look of Japan is built with the next.js app version to have both server side and client side rendering. The project uses typescript to aid in fixing run-time errors and making sure props are used with the correct types. The back-end is built with prisma, my-sql with PlanetScale as the database provider. Users can register or sign in with their google accounts using next-auth or register using regular email and password. The app is styled for mobile and desktop using taliwindCSS. Other packages such as react-firebase-hooks, axios, next/fonts, react-toast provide features to show notifcations, and create http requests.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ScreenShots
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# Getting Started
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Dependencies
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project requires node.js to be installed in order to be run
 
-## Learn More
+### Installing
 
-To learn more about Next.js, take a look at the following resources:
+- Clone the project
+- Create a database using PlanetScale
+- Create an env file including the environmental variables
+- Run the command npm install to install packages
+- Run the website using command "npm run dev"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Executing program
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- To execute run the command "npm run dev"
 
-## Deploy on Vercel
+## Authors
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Jason mac  
+[@JasonMaC](https://github.com/JasonMac123/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Version History
+
+- 0.1
+  - Initial Release
