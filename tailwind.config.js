@@ -9,8 +9,6 @@ module.exports = {
     extend: {
       colors: {
         taupe: "#463F3A",
-        darkGray: "#8A817C",
-        silver: "#BCB8B1",
         isabelline: "#F4F3EE",
         melon: "#E0AFA0",
         davyGray: "#4D4D4D",
