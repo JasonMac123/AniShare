@@ -37,7 +37,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     },
     {
       label: "Following Users",
-      href: `/FollowedUsers`,
+      href: `/followedUsers`,
       icon: RiUserFollowFill,
     },
   ];
