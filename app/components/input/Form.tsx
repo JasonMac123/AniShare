@@ -1,7 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useState } from "react";
@@ -10,23 +8,20 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useLogin from "../hooks/useLoginModal";
 import useRegister from "../hooks/useRegisterModal";
 
-import InputForm from "./InputForm";
-import Button from "./Button";
 import { SafeUser } from "@/app/types";
+
+import Button from "./Button";
 import ImageUpload from "./ImageUpload";
 import Avatar from "../user/Avatar";
+import TextAreaForm from "./TextAreaForm";
 
 interface FormProps {
-  isComment?: boolean;
-  postId?: string;
   user: SafeUser | null;
 }
 
-const Form: React.FC<FormProps> = ({ isComment, postId, user }) => {
+const Form: React.FC<FormProps> = ({ user }) => {
   const loginModal = useLogin();
   const registerModal = useRegister();
-
-  const router = useRouter();
 
   const [loading, setLoading] = useState(false);
 
@@ -88,14 +83,14 @@ const Form: React.FC<FormProps> = ({ isComment, postId, user }) => {
               <Avatar userId={user.id} userImage={user.profileImage} />
             </div>
             <div className="w-full space-y-4">
-              <InputForm
+              <TextAreaForm
                 id="body"
                 label="Body"
-                type="text"
                 disabled={loading}
                 register={register}
                 errors={errors}
                 required
+                value={body}
               />
               <ImageUpload
                 label="Image"

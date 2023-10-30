@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import axios from "axios";
+
 import { FcGoogle } from "react-icons/fc";
 
 import Modal from "./Modal";
@@ -11,10 +12,14 @@ import Button from "../input/Button";
 
 import useLogin from "../hooks/useLoginModal";
 import useRegister from "../hooks/useRegisterModal";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const RegisterModal = () => {
   const loginModal = useLogin();
   const registerModal = useRegister();
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
 
   const {
@@ -39,11 +44,36 @@ const RegisterModal = () => {
 
     axios
       .post("/api/register", data)
-      .then(() => {
-        registerModal.onClose();
+      .then((data) => {
+        if (data.data === "Duplicate Email") {
+          toast(
+            "Email is already being used by another account. Use another Email"
+          );
+          return;
+        }
+
+        if (data.data === "Duplicate UserName") {
+          toast("Username is already taken. Use another Username");
+          return;
+        }
+
+        signIn("credentials", {
+          email: data.data.email,
+          password: data.data.password,
+          redirect: false,
+        }).then((callback) => {
+          if (callback?.ok) {
+            toast("Registered");
+            router.refresh();
+            registerModal.onClose();
+          }
+          if (callback?.error) {
+            toast(`${callback.error}`);
+          }
+        });
       })
       .catch((error) => {
-        toast("Something went wrong");
+        console.log(error);
       })
       .finally(() => {
         setLoading(false);

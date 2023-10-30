@@ -24,6 +24,7 @@ model User {
   followedBy      User[]         @relation("UserFollows")
   following       User[]         @relation("UserFollows")
   posts           Post[]
+  likedPosts      Post[]         @relation("UserLikedPosts")
   comments        Comment[]
   notifications   Notification[]
 }
@@ -36,6 +37,7 @@ model Post {
   updatedAt DateTime  @updatedAt
   authorId  String
   author    User      @relation(fields: [authorId], references: [id])
+  likedIds  User[]    @relation("UserLikedPosts")
   comment   Comment[]
 
   @@index([authorId])
@@ -58,6 +60,8 @@ model Comment {
 model Notification {
   id        String   @id @unique @default(uuid())
   body      String
+  type      String
+  reference String
   createdAt DateTime @default(now())
   userId    String
   user      User     @relation(fields: [userId], references: [id])
@@ -72,4 +76,13 @@ model UserFollows {
   @@unique([A, B], map: "_UserFollows_AB_unique")
   @@index([B], map: "_UserFollows_B_index")
   @@map("_UserFollows")
+}
+
+model UserLikedPosts {
+  A String
+  B String
+
+  @@unique([A, B], map: "_UserLikedPosts_AB_unique")
+  @@index([B], map: "_UserLikedPosts_B_index")
+  @@map("_UserLikedPosts")
 }

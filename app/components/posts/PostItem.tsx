@@ -1,8 +1,9 @@
 "use client";
 
 import { SafePost, SafeUser } from "@/app/types";
+import { toast } from "react-toastify";
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { formatDistanceToNowStrict } from "date-fns";
@@ -11,16 +12,27 @@ import useLogin from "../hooks/useLoginModal";
 
 import Avatar from "../user/Avatar";
 import Image from "next/image";
+import axios from "axios";
 
 interface PostItemProps {
-  userId: string;
   data: SafePost;
   user: SafeUser | null;
 }
 
-const PostItem: React.FC<PostItemProps> = ({ userId, data, user }) => {
+const PostItem: React.FC<PostItemProps> = ({ data, user }) => {
   const router = useRouter();
   const loginModal = useLogin();
+
+  const [likeCount, setLikeCount] = useState(data.likedIds.length);
+  const [distanceToFromNow, setDistanceToFromNow] = useState(data.createdAt);
+
+  const newDate = useMemo(() => {
+    return formatDistanceToNowStrict(new Date(data.createdAt));
+  }, [data.createdAt]);
+
+  useEffect(() => {
+    setDistanceToFromNow(newDate);
+  });
 
   const redirectUserPage = useCallback(
     (event: any) => {
@@ -33,20 +45,45 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data, user }) => {
   const redirectPostPage = useCallback(
     (event: any) => {
       event.stopPropagation();
-      router.push(`/posts/${data.id}`);
+      router.push(`/post/${data.id}`);
     },
     [router, data.id]
   );
 
-  const dateSincePost = useMemo(() => {
-    return formatDistanceToNowStrict(new Date(data.createdAt));
-  }, [data.createdAt]);
+  const onLike = useCallback(
+    (event: any) => {
+      event.stopPropagation();
 
-  const onLike = useCallback(() => {
-    if (!user) {
-      loginModal.onOpen;
-    }
-  }, []);
+      if (!user) {
+        loginModal.onOpen;
+        return;
+      }
+
+      if (data.likedIds.some((item) => item.id === user.id)) {
+        axios
+          .delete("/api/like", { data: { postId: data.id } })
+          .then(() => {
+            toast(`Unliked ${data.body} post`);
+            setLikeCount(likeCount - 1);
+          })
+          .catch((error) => {
+            toast(error);
+          });
+        return;
+      }
+
+      axios
+        .post("/api/like", { postId: data.id })
+        .then(() => {
+          toast(`Liked ${data.body} post`);
+          setLikeCount(likeCount + 1);
+        })
+        .catch((error) => {
+          toast(error);
+        });
+    },
+    [data, user]
+  );
 
   return (
     <div
@@ -61,7 +98,9 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data, user }) => {
         >
           @{data.author.username}
         </p>
-        <span className="text-neutral-100 text-sm">{dateSincePost} ago</span>
+        <span className="text-neutral-100 text-sm">
+          {distanceToFromNow} ago
+        </span>
       </div>
       {data.image ? (
         <div className="flex flex-col w-full">
@@ -90,7 +129,7 @@ const PostItem: React.FC<PostItemProps> = ({ userId, data, user }) => {
           onClick={onLike}
         >
           <AiOutlineHeart size={20} />
-          <p>{data.comment?.length || 0}</p>
+          <p>{likeCount}</p>
         </div>
       </div>
     </div>

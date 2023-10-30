@@ -1,4 +1,4 @@
-import { User, Post, Comment } from "@prisma/client";
+import { User, Post, Comment, Notification } from "@prisma/client";
 
 export type SafeUser = Omit<
   User,
@@ -16,9 +16,15 @@ export type SafePost = Omit<Post, "createdAt" | "updatedAt"> & {
   updatedAt: string;
   author: SafeUser;
   comment: SafeComment[];
+  likedIds: User[];
 };
 
 export type SafeComment = Omit<Comment, "createdAt" | "updatedAt"> & {
   createdAt: string;
   updatedAt: string;
+  user: User;
+};
+
+export type SafeNotification = Omit<Notification, "createdAt"> & {
+  createdAt: string;
 };

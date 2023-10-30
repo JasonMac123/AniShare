@@ -1,8 +1,11 @@
 "use client";
 
 import Image from "next/image";
+
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+
+import { BsFillFileEarmarkImageFill } from "react-icons/bs";
 
 interface ImageUploadProps {
   onChange: (base64: string) => void;
@@ -59,7 +62,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             <Image src={value} height={100} width={100} alt="Uploaded Image" />
           </div>
         ) : (
-          <p className="text-black">{label}</p>
+          <div className="w-full flex flex-row items-center justify-center gap-4">
+            <p className="text-black">{label}</p>
+            <BsFillFileEarmarkImageFill size={20} />
+          </div>
         )}
       </div>
     </div>

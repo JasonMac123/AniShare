@@ -25,14 +25,16 @@ export default async function RootLayout({
 }) {
   const currentUser = await getCurrentUser();
 
-  const users = await axios.get("http://localhost:3000/api/users");
+  const users = await axios.get(
+    `http://localhost:3000/api/users?currentUser=${currentUser?.id}`
+  );
 
   return (
     <html lang="en">
       <body className="bg-davyGray">
         <div>
           <ToastContainer
-            position="top-right"
+            position="top-center"
             autoClose={5000}
             hideProgressBar={false}
             newestOnTop
@@ -48,7 +50,7 @@ export default async function RootLayout({
           <RegisterModal />
           <div className="grid grid-cols-4 h-full mx-auto xl:w-2/3 lg:w-3/4 w-full">
             <UserMenu currentUser={currentUser} />
-            <div className="w-full h-full col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
+            <div className="w-full h-full min-h-screen col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
               {children}
             </div>
             <FollowBar users={users.data} />

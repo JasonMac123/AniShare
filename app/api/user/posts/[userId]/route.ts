@@ -16,6 +16,7 @@ export async function GET(request: NextRequest, context: any) {
       include: {
         comment: true,
         author: true,
+        likedIds: true,
       },
     });
 

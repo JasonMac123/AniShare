@@ -6,6 +6,7 @@ import UserMenuCreate from "./UserMenuCreate";
 
 import { BsHouseFill, BsBellFill } from "react-icons/bs";
 import { BiLogIn, BiLogOut, BiSolidMessage } from "react-icons/bi";
+import { RiUserFollowFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 
 import { signOut } from "next-auth/react";
@@ -27,16 +28,17 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
       label: "Notifications",
       href: "/notifications",
       icon: BsBellFill,
-    },
-    {
-      label: "Messages",
-      href: "/user/messages/123",
-      icon: BiSolidMessage,
+      alert: currentUser?.hasNotification,
     },
     {
       label: "Profile",
       href: `/users/${currentUser?.id}`,
       icon: FaUser,
+    },
+    {
+      label: "Following Users",
+      href: `/followedUsers`,
+      icon: RiUserFollowFill,
     },
   ];
 
@@ -48,12 +50,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         <div className="space-y-2 lg:w-[230px] mt-4">
           <UserMenuLogo />
           {userMenuItems.map((item) => (
-            <UserMenuItem
-              key={item.href}
-              href={item.href}
-              label={item.label}
-              icon={item.icon}
-            />
+            <UserMenuItem key={item.href} {...item} currentUser={currentUser} />
           ))}
           <UserMenuCreate />
           {currentUser ? (

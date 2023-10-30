@@ -8,7 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 import useEdit from "../hooks/useEditModal";
-import InputForm from "../input/InputForm";
+import TextAreaForm from "../input/TextAreaForm";
 import Modal from "./Modal";
 import ImageUpload from "../input/ImageUpload";
 
@@ -31,13 +31,14 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      username: user.username,
+      id: user.id,
       bio: user.bio,
       coverImage: user.coverImage,
       profileImage: user.profileImage,
     },
   });
 
+  const bio = watch("bio");
   const coverImage = watch("coverImage");
   const profileImage = watch("profileImage");
 
@@ -53,10 +54,7 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
     setLoading(true);
 
     axios
-      .patch("/api/edit", {
-        ...data,
-        id: user?.id,
-      })
+      .patch("/api/edit", data)
       .then(() => {
         editModal.onClose();
         router.refresh();
@@ -85,21 +83,14 @@ const Editmodal: React.FC<EditModalProps> = ({ user }) => {
           setFormValue("profileImage", value);
         }}
       />
-      <InputForm
-        id="username"
-        label="Username"
-        type="text"
-        disabled={loading}
-        register={register}
-        errors={errors}
-      />
-      <InputForm
+      <TextAreaForm
         id="bio"
-        label="Bio"
-        type="text"
+        label="Body"
         disabled={loading}
         register={register}
         errors={errors}
+        required
+        value={bio}
       />
     </div>
   );

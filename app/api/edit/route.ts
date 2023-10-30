@@ -2,12 +2,12 @@ import { NextApiRequest } from "next";
 import prisma from "../../prisma/prismadb";
 import { NextResponse } from "next/server";
 
-export async function PATCH(req: NextApiRequest) {
+export async function PATCH(req: Request) {
   try {
-    const { id, name, username, bio, profileImage, coverImage } = req.body;
+    const { id, bio, profileImage, coverImage } = await req.json();
 
-    if (!name || !username) {
-      throw new Error("Missing Fields");
+    if (!id) {
+      throw new Error("Missing user credentials");
     }
 
     const updatedUser = await prisma.user.update({
@@ -15,8 +15,6 @@ export async function PATCH(req: NextApiRequest) {
         id: id,
       },
       data: {
-        name,
-        username,
         bio,
         profileImage,
         coverImage,
