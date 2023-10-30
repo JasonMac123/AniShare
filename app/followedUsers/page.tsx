@@ -23,7 +23,9 @@ export default async function Home() {
     );
   }
 
-  const posts = await axios.get("http://localhost:3000/api/posts/followed");
+  const posts = await axios.get(
+    `http://localhost:3000/api/posts/followed/${user.id}`
+  );
 
   return (
     <>
