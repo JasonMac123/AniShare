@@ -29,7 +29,7 @@ export default async function Home() {
 
   return (
     <>
-      <Header label="Followed Users Posts" disableBack />
+      <Header label="Followed Users Posts" disableBack bottomBorder />
       <PostFeed posts={posts.data} user={user} />
     </>
   );
