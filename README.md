@@ -1,4 +1,4 @@
-# Marketplace - Look of Japan
+# Anishare
 
 A website for people to share their anime tastes!
 
